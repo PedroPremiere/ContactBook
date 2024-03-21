@@ -31,6 +31,7 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/compiler-sfc": "^3.4.21",
+    "@vue/tsconfig": "^0.5.1",
     "eslint": "^7.32.0",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-vue": "^8.0.3",
