@@ -10,10 +10,12 @@
     >
       <v-card
           max-width="400"
-          prepend-icon="mdi-update"
-          text="Your application will relaunch automatically after the update is complete."
-          title="Update in progress"
+          :text=text
+          :title=title
       >
+        <v-card-item>
+        <my-form />
+        </v-card-item>
         <template v-slot:actions>
           <v-btn
               class="ms-auto"
@@ -27,9 +29,15 @@
 </template>
 <script>
 import './index.css';
+import MyForm from '../../atoms/form/index.vue'
 
 export default {
-    name: 'my-button',
+  name: 'my-button',
+  components: {MyForm},
+  props:{
+    text:String,
+    title:String
+  },
   data () {
     return {
       dialog: false,

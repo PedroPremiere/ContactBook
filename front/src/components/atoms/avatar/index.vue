@@ -1,6 +1,8 @@
 <template>
 
-  <v-avatar color="info" icon="$vuetify" size="54"></v-avatar>
+  <v-avatar color="info" size="54">
+    <span class="text-h5">{{initials}}</span>
+  </v-avatar>
 
 </template>
 
@@ -9,10 +11,9 @@ import './index.css';
 
 export default {
     name: 'my-avatar',
-
     props: {
+      initials:String
     },
-
     emits: ['click'],
 
 };

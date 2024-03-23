@@ -1,10 +1,9 @@
 <template>
-  <v-form v-model="valid">
+  <v-form v-model="valid" @submit.prevent>
     <v-container>
       <v-row>
         <v-col
             cols="12"
-            md="4"
         >
           <v-text-field
               v-model="firstname"
@@ -15,24 +14,10 @@
               required
           ></v-text-field>
         </v-col>
-
+      </v-row>
+      <v-row>
         <v-col
             cols="12"
-            md="4"
-        >
-          <v-text-field
-              v-model="lastname"
-              :counter="10"
-              :rules="nameRules"
-              label="Last name"
-              hide-details
-              required
-          ></v-text-field>
-        </v-col>
-
-        <v-col
-            cols="12"
-            md="4"
         >
           <v-text-field
               v-model="email"
@@ -44,6 +29,7 @@
         </v-col>
       </v-row>
     </v-container>
+    <v-btn class="mt-2" type="submit" :disabled="!valid" block>Submit</v-btn>
   </v-form>
 </template>
 
@@ -51,7 +37,7 @@
 import './index.css';
 
 export default {
-    name: 'my-button',
+    name: 'my-form',
   data: () => ({
     valid: false,
     firstname: '',
