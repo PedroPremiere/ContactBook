@@ -1,5 +1,5 @@
 <template>
-  <v-container class="bg-surface-variant">
+  <v-container class="bg-surface-variant rounded-t-xl">
     <v-row no-gutters  class="d-flex justify-space-between mb-6 bg-surface-variant">
         <h1>Kontakty</h1>
         <v-icon icon="fas mdi-plus" />
