@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import './index.css';
+
 
 export default {
     name: 'my-autocomplete',

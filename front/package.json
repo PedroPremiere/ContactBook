@@ -6,20 +6,23 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\"",
+    "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
     "@ngneat/falso": "^7.2.0",
     "core-js": "^3.8.3",
     "dayjs": "^1.11.10",
     "vue": "^3.2.13",
+    "vue-i18n": "^9.1.0",
     "vuetify": "^3.5.11"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
     "@chromatic-com/storybook": "^1.2.25",
+    "@intlify/vue-i18n-loader": "^3.0.0",
     "@mdi/font": "^7.4.47",
     "@storybook/addon-essentials": "^8.0.2",
     "@storybook/addon-interactions": "^8.0.2",
@@ -38,6 +41,7 @@
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-vue": "^8.0.3",
     "storybook": "^8.0.2",
+    "vue-cli-plugin-i18n": "~2.3.2",
     "vue-loader": "^17.4.2"
   },
   "eslintConfig": {

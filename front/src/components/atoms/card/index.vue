@@ -9,7 +9,14 @@
       <my-avatar :initials="initials"/>
     </template>
     <template v-slot:append>
-      <p>{{createdTimeToNow}}</p>
+
+      <p>
+        {{createdTimeToNow}}
+        <v-tooltip
+            activator="parent"
+            location="top"
+        >{{ createDate }}</v-tooltip>
+      </p>
     </template>
   </v-card>
 </template>
