@@ -38,9 +38,6 @@
             </p>
           </div>
 
-
-
-
           <v-avatar  v-if="sort==='name'" color="indigo">{{value}}</v-avatar>
 
           <TransitionGroup>
@@ -67,10 +64,10 @@
 <script>
 import './index.css';
 import MyCard from '../card/index.vue'
-import { randFullName, randPhoneNumber,randRecentDate } from '@ngneat/falso'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import localizedFormat from 'dayjs/plugin/localizedFormat';
+import { mapGetters } from 'vuex'
+
 
 
 export default {
@@ -78,6 +75,12 @@ export default {
   components: {MyCard},
 
   computed: {
+      ...mapGetters({
+        cards: 'items',
+        groupBy1stLetter:"groupBy1stLetter",
+        groupByTimeAgo:"groupByTimeAgo"
+      })
+    ,
     perRow() {
       switch (this.$vuetify.display.name) {
         case 'xs': return 1
@@ -94,20 +97,6 @@ export default {
     sort:"name",
     size: 80,
     virtualLength: 12,
-    cards: [
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()},
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()},
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()},
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()},
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()},
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()},
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()},
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()},
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()},
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()},
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()},
-          {name:randFullName(),phone:randPhoneNumber(),createDate:randRecentDate()}
-      ],
   }),
 
   methods: {
@@ -115,87 +104,22 @@ export default {
       dayjs.extend(relativeTime);
       return dayjs(createDate).fromNow();
     },
-    groupBy1stLetter(arr){
-      function compare( a, b ) {
-        if ( a.name < b.name ){
-          return -1;
-        }
-        if ( a.name > b.name ){
-          return 1;
-        }
-        return 0;
-      }
-
-      arr.sort( compare );
-      const items = arr.reduce((store, word) => {
-        const letter = word.name.charAt(0)
-        const keyStore = (
-            store[letter] ||     // Does it exist in the object?
-            (store[letter] = []) // If not, create it as an empty array
-        );
-        keyStore.push(word)
-
-        return store
-      }, {})
-
-      console.log(items)
-
-      return items;
-    },
-    groupByTimeAgo(arr){
-      dayjs.extend(relativeTime);
-      dayjs.extend(localizedFormat);
-      const items = arr.reduce((store, word) => {
-        const timeAgo = dayjs(word.createDate).format('l');//dayjs(word.createDate).fromNow();
-        const keyStore = (
-            store[timeAgo] ||     // Does it exist in the object?
-            (store[timeAgo] = []) // If not, create it as an empty array
-        );
-        keyStore.push(word)
-
-        return store
-      }, {})
-
-      console.log(items)
-      return Object.fromEntries(Object.entries(items).sort().reverse());
-
-      //return items;
-    },
-    sorting(arr){
+    sorting(){
       if (this.sort==='date'){
-        return this.groupByTimeAgo(arr);
+        return this.groupByTimeAgo;
       }
-      return this.groupBy1stLetter(arr);
+      return this.groupBy1stLetter;
     },
     chunk(arr,size){
       return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
           arr.slice(i * size, i * size + size)
       );
     },
-    createRange (length, start) {
-      return Array.from({ length }).map((_, i) => i + start)
-    },
     load ({ side, done }) {
       console.log(side);
 
       console.log(this.$i18n.locale);
       done('ok');
-      /*
-      const halfVirtualLength = this.virtualLength / 2
-      if (side === 'start') {
-        const arr = this.createRange(halfVirtualLength, this.cards[0] - halfVirtualLength)
-        this.cards = [...arr, ...this.cards.slice(0, halfVirtualLength)]
-        this.$nextTick(() => {
-          this.$refs.infinite.$el.scrollTop = this.$refs.infinite.$el.scrollHeight - (halfVirtualLength * this.size) - this.$refs.infinite.$el.scrollTop
-        })
-      } else {
-        const arr = this.createRange(halfVirtualLength, this.cards.at(-1) + 1)
-        this.cards = [...this.cards.slice(halfVirtualLength), ...arr]
-      }
-
-      done('ok')
-
-       */
     },
   },
 };
