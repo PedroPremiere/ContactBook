@@ -1,21 +1,21 @@
 <template>
-  <v-infinite-scroll
+  <v-container class="bg-surface-variant">
+    <v-infinite-scroll
       ref="infinite"
       height="500"
       @load="load"
-  >
-    <div>
-      <template v-for="card in cards" :key="card">
-        <v-sheet
-            :color="card % 2 === 0 ? 'primary' : card % 4 === 0 ? 'secondary' : 'warning'"
-            :height="size"
-            class="d-flex align-center justify-center"
-        >
-          <my-card :title="card.name" :subtitle="card.phone" ></my-card>
-        </v-sheet>
-      </template>
-    </div>
-  </v-infinite-scroll>
+    >
+      <div>
+        <template v-for="card in cards" :key="card">
+            <v-row no-gutters>
+              <v-col cols="12" class="mb-2">
+                <my-card :title="card.name" :subtitle="card.phone" ></my-card>
+              </v-col>
+            </v-row>
+        </template>
+      </div>
+    </v-infinite-scroll>
+  </v-container>
 </template>
 
 <script>

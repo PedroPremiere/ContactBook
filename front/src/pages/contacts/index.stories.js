@@ -1,9 +1,9 @@
-import MyScroll from './index.vue';
+import ContactsPage from './index.vue';
 
 
 export default {
-    title: 'Components/Atoms/Scroll',
-    component: MyScroll,
+    title: 'Components/Pages/Contacts',
+    component: ContactsPage,
     tags: ['autodocs'],
 };
 
