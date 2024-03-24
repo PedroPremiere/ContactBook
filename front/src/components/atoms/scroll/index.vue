@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
 
-        <v-btn v-on:click="this.sort='name'">
+        <v-btn v-on:click="this.sort='name'" data-v-step="5">
           {{ $t("sortBy") }}
           {{ $t("name") }}
         </v-btn>
@@ -11,7 +11,7 @@
       </v-col>
       <v-col>
 
-        <v-btn  v-on:click="this.sort='date'">
+        <v-btn  v-on:click="this.sort='date'" data-v-step="4">
           {{ $t("sortBy") }}
           {{ $t("date") }}
         </v-btn>

@@ -6,14 +6,15 @@
           v-model="$root.$i18n.locale"
           :items="langs"
           v-on:update:menu="changeLanguage"
+          id="v-step-0"
       ></v-combobox>
     </v-row>
     <v-row no-gutters  class="d-flex justify-space-between mb-6 bg-surface-variant">
         <h1>{{ $t("title") }}</h1>
-        <v-icon icon="fas mdi-plus" />
+        <v-icon icon="fas mdi-plus" class="v-step-1" />
     </v-row>
     <v-row no-gutters>
-      <my-autocomplete />
+      <my-autocomplete data-v-step="2" />
     </v-row>
       <v-row no-gutters>
     <my-scroll />
@@ -21,7 +22,9 @@
     <v-row no-gutters>
       <my-bottom-nav/>
     </v-row>
+
   </v-container>
+  <v-tour name="myTour" :steps="steps"></v-tour>
 </template>
 
 <script>
@@ -31,7 +34,9 @@ import MyScroll from '../../components/atoms/scroll/index.vue'
 import MyAutocomplete from '../../components/atoms/autocomplete/index.vue'
 import dayjs from 'dayjs'
 // eslint-disable-next-line no-unused-vars
-import _dayjs from 'dayjs/locale/pl';
+import 'dayjs/locale/pl';
+import 'dayjs/locale/de';
+import 'dayjs/locale/nl';
 
 export default {
     name: 'contacts-page',
@@ -41,11 +46,47 @@ export default {
 
     emits: ['click'],
     data () {
-      return { langs: ['en','pl'] }
+      return { langs: ['en','pl','de','nl'] ,
+        steps: [
+          {
+            target: '#v-step-0',  // We're using document.querySelector() under the hood
+            header: {
+              title: 'Get Started',
+            },
+            content: `Discover <strong>Vue Tour</strong>!`
+          },
+          {
+            target: '.v-step-1',
+            content: 'An awesome plugin made with Vue.js!'
+          },
+          {
+            target: '[data-v-step="2"]',
+            content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
+            params: {
+              placement: 'top'
+            }
+          },
+          {
+            target: '[data-v-step="4"]',
+            content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
+            params: {
+              placement: 'top'
+            }
+          },
+          {
+            target: '[data-v-step="5"]',
+            content: 'Try it, you\'ll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.',
+            params: {
+              placement: 'top'
+            }
+          }
+        ]
+      }
     },
     mounted(){
       if(localStorage.Lang!=null) this.$i18n.locale=localStorage.Lang;
       dayjs.locale(this.$i18n.locale);
+      this.$tours['myTour'].start()
     },
     methods:{
     changeLanguage(){
