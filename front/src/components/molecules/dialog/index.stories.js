@@ -14,6 +14,7 @@ export const Primary = {
         primary: true,
         label: 'Button',
         text: randProductDescription(),
-        title: randProductName()
+        title: randProductName(),
+        open: true
     },
 };

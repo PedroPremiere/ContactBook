@@ -1,12 +1,8 @@
 <template>
-  <div class="text-center pa-4">
-    <v-btn @click="dialog = true">
-      Open Dialog
-    </v-btn>
-
     <v-dialog
-        v-model="dialog"
         width="auto"
+        v-model="open$"
+        persistent
     >
       <v-card
           max-width="400"
@@ -20,28 +16,43 @@
           <v-btn
               class="ms-auto"
               text="Ok"
-              @click="dialog = false"
+              @click="close"
           ></v-btn>
         </template>
       </v-card>
     </v-dialog>
-  </div>
 </template>
+
 <script>
 import './index.css';
 import MyForm from '../../atoms/form/index.vue'
 
 export default {
-  name: 'my-button',
+  name: 'MyDialog',
   components: {MyForm},
   props:{
     text:String,
-    title:String
+    title:String,
+    open:Boolean
   },
   data () {
     return {
-      dialog: false,
+      open$:Boolean
     }
   },
+  mounted () {
+    this.open$ = this.open;
+  },
+  watch:{
+    open(){
+      this.open$ = this.open;
+    }
+  },
+  methods:{
+    close(){
+      this.$emit('close');
+    }
+  },
+  emits:['close'],
 };
 </script>

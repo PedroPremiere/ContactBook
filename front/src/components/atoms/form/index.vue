@@ -37,7 +37,7 @@
 import './index.css';
 
 export default {
-    name: 'my-form',
+  name: 'my-form',
   data: () => ({
     valid: false,
     firstname: '',
@@ -68,10 +68,11 @@ export default {
       },
     ],
   }),
-    props: {
-    },
+  props: {
 
-    emits: ['click'],
+  },
+
+  emits: ['click'],
 
 };
 </script>

@@ -40,7 +40,7 @@
 
           <v-avatar  v-if="sort==='name'" color="indigo">{{value}}</v-avatar>
 
-          <TransitionGroup>
+
           <div v-for="items in chunk(key,perRow)" :key="items">
             <div  class="d-flex justify-space-evenly mb-1 bg-surface-variant">
 
@@ -50,7 +50,7 @@
 
             </div>
           </div>
-          </TransitionGroup>
+
         </template>
 
       </v-infinite-scroll>
@@ -124,19 +124,3 @@ export default {
   },
 };
 </script>
-<style>
-.v-enter-from {
-  opacity: 0;
-}
-.v-enter-to {
-  opacity: 1;
-}
-.v-enter-active,
-.v-leave-active,
-.v-move {
-  transition: all 1s;
-}
-.v-leave-from { opacity: 1; }
-.v-leave-to { opacity: 0; }
-
-</style>

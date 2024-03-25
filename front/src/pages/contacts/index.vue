@@ -11,21 +11,28 @@
     </v-row>
     <v-row no-gutters  class="d-flex justify-space-between mb-6 bg-surface-variant">
         <h1>{{ $t("title") }}</h1>
-        <v-icon icon="fas mdi-plus" class="v-step-1" />
+        <v-icon icon="fas mdi-plus" class="v-step-1" v-on:click="setNewContactDialog"/>
     </v-row>
     <v-row no-gutters>
       <my-autocomplete data-v-step="2" />
     </v-row>
-      <v-row no-gutters>
-    <my-scroll />
-      </v-row>
+    <v-row no-gutters>
+      <my-scroll />
+    </v-row>
     <v-row no-gutters>
       <my-bottom-nav/>
     </v-row>
 
   </v-container>
   <v-tour name="myTour" :steps="steps"></v-tour>
+  <my-dialog
+      :open="isDialogOpen"
+      @close="closeDialog"
+      :text="selectedDialogText.text"
+      :title="selectedDialogText.title"
+  />
 </template>
+
 
 <script>
 
@@ -37,16 +44,21 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/pl';
 import 'dayjs/locale/de';
 import 'dayjs/locale/nl';
+import MyDialog from '../../components/molecules/dialog/index.vue'
 
 export default {
     name: 'contacts-page',
-    components:{MyBottomNav,MyScroll,MyAutocomplete},
+    components:{MyBottomNav,MyScroll,MyAutocomplete,MyDialog},
     props: {
     },
-
     emits: ['click'],
     data () {
       return { langs: ['en','pl','de','nl'] ,
+        isDialogOpen:false,
+        selectedDialogText:{
+          title:"",
+          text: ""
+        },
         steps: [
           {
             target: '#v-step-0',  // We're using document.querySelector() under the hood
@@ -89,10 +101,27 @@ export default {
       this.$tours['myTour'].start()
     },
     methods:{
-    changeLanguage(){
-      dayjs.locale(this.$i18n.locale);
-      localStorage.Lang=this.$i18n.locale;
-    }
+      changeLanguage(){
+        dayjs.locale(this.$i18n.locale);
+        localStorage.Lang=this.$i18n.locale;
+      },
+      closeDialog(){
+        this.isDialogOpen=false;
+      },
+      setNewContactDialog(){
+        this.selectedDialogText={
+          title:"New contact",
+          text: " Add new user to your phone book"
+        }
+        this.isDialogOpen=true
+      },
+      setEditContactDialog(){
+        this.selectedDialogText={
+          title:"Edit",
+          text: "You are updating contact"
+        }
+        this.isDialogOpen=true
+      }
   }
 };
 </script>
