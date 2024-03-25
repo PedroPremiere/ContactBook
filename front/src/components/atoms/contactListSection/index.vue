@@ -19,7 +19,7 @@ export default {
     name: 'ContactListSection',
     components: { MyContactsSeparator, MyContactRow },
     props: {
-        items: [],
+        items: Array,
         sort: String
     },
     computed: {

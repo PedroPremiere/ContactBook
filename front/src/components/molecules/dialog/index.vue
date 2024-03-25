@@ -1,8 +1,8 @@
 <template>
-    <v-dialog v-model="open$" width="auto" persistent>
-        <v-card max-width="400" :text="text" :title="title">
+    <v-dialog v-model="open$" class="w-75" persistent>
+        <v-card :text="text" :title="title">
             <v-card-item>
-                <my-form />
+                <my-form :firstname="name" :email="phone" @save="save" />
             </v-card-item>
             <template #actions>
                 <v-btn class="ms-auto" text="Ok" @click="close"></v-btn>
@@ -21,9 +21,17 @@ export default {
     props: {
         text: String,
         title: String,
-        open: Boolean
+        open: Boolean,
+        name: {
+            type: String,
+            default: ''
+        },
+        phone: {
+            type: String,
+            default: ''
+        }
     },
-    emits: ['close'],
+    emits: ['close', 'save'],
     data() {
         return {
             open$: Boolean
@@ -40,6 +48,9 @@ export default {
     methods: {
         close() {
             this.$emit('close');
+        },
+        save(value) {
+            this.$emit('save', value);
         }
     }
 };

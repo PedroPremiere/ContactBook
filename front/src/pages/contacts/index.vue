@@ -38,7 +38,9 @@
             :text="selectedDialogText.text"
             :title="selectedDialogText.title"
             @close="closeDialog"
+            @save="save"
         />
+        <my-delete-dialog :open="open" @close="open = false" />
     </div>
 </template>
 
@@ -52,10 +54,18 @@ import 'dayjs/locale/pl';
 import 'dayjs/locale/de';
 import 'dayjs/locale/nl';
 import MyDialog from '../../components/molecules/dialog/index.vue';
+import { mapActions } from 'vuex';
+import MyDeleteDialog from '@/components/molecules/deleteDialog/index.vue';
 
 export default {
     name: 'ContactsPage',
-    components: { MyBottomNav, MyScroll, MyAutocomplete, MyDialog },
+    components: {
+        MyDeleteDialog,
+        MyBottomNav,
+        MyScroll,
+        MyAutocomplete,
+        MyDialog
+    },
     props: {},
     emits: ['click'],
     data() {
@@ -111,6 +121,9 @@ export default {
         this.$tours['myTour'].start();
     },
     methods: {
+        ...mapActions({
+            saveContact: 'save'
+        }),
         changeLanguage() {
             dayjs.locale(this.$i18n.locale);
             localStorage.Lang = this.$i18n.locale;
@@ -131,6 +144,10 @@ export default {
                 text: 'You are updating contact'
             };
             this.isDialogOpen = true;
+        },
+        save(value) {
+            console.log(value);
+            this.saveContact(value);
         }
     }
 };

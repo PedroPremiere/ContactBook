@@ -4,11 +4,10 @@
             <v-row>
                 <v-col cols="12">
                     <v-text-field
-                        v-model="firstname"
+                        v-model="firstName$"
                         :counter="10"
                         :rules="nameRules"
                         label="First name"
-                        hide-details
                         required
                     ></v-text-field>
                 </v-col>
@@ -16,16 +15,15 @@
             <v-row>
                 <v-col cols="12">
                     <v-text-field
-                        v-model="email"
+                        v-model="email$"
                         :rules="emailRules"
                         label="E-mail"
-                        hide-details
                         required
                     ></v-text-field>
                 </v-col>
             </v-row>
         </v-container>
-        <v-btn class="mt-2" type="submit" :disabled="!valid" block>
+        <v-btn class="mt-2" :disabled="!valid" block @click="save()">
             Submit
         </v-btn>
     </v-form>
@@ -36,13 +34,22 @@ import './index.css';
 
 export default {
     name: 'MyForm',
-    props: {},
+    props: {
+        firstname: {
+            type: String,
+            default: ''
+        },
+        email: {
+            type: String,
+            default: ''
+        }
+    },
 
-    emits: ['click'],
+    emits: ['save'],
     data: () => ({
         valid: false,
-        firstname: '',
-        lastname: '',
+        firstName$: '',
+        email$: '',
         nameRules: [
             value => {
                 if (value) return true;
@@ -50,12 +57,11 @@ export default {
                 return 'Name is required.';
             },
             value => {
-                if (value?.length <= 10) return true;
+                if (value?.length <= 30) return true;
 
-                return 'Name must be less than 10 characters.';
+                return 'Name must be less than 30 characters.';
             }
         ],
-        email: '',
         emailRules: [
             value => {
                 if (value) return true;
@@ -68,6 +74,19 @@ export default {
                 return 'E-mail must be valid.';
             }
         ]
-    })
+    }),
+    mounted() {
+        this.email$ = this.email;
+        this.firstName$ = this.firstname;
+    },
+    methods: {
+        save() {
+            this.$emit('save', {
+                name: this.firstName$,
+                phone: this.email$,
+                createDate: Date.now().toString()
+            });
+        }
+    }
 };
 </script>

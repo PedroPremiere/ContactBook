@@ -3,17 +3,12 @@
         <my-sorting-menu @set-sorting="value => (sort = value)" />
         <v-row>
             <v-col>
-                <v-infinite-scroll
-                    ref="infinite"
-                    height="500"
-                    width="100%"
-                    @load="load"
-                >
+                <v-list lines="one" class="bg-surface-variant">
                     <contact-list-section
                         :items="sorting(cards)"
                         :sort="sort"
                     />
-                </v-infinite-scroll>
+                </v-list>
             </v-col>
         </v-row>
     </v-container>

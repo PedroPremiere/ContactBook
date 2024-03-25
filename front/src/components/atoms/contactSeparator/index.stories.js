@@ -1,7 +1,7 @@
 import MyContactsSeparator from './index.vue';
 
 export default {
-    title: 'Components/Atoms/Card',
+    title: 'Components/Atoms/ContactsSeparator',
     component: MyContactsSeparator,
     tags: ['autodocs']
 };
