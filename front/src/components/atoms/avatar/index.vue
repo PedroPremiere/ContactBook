@@ -1,20 +1,18 @@
 <template>
-
-  <v-avatar color="info" size="54">
-    <span class="text-h5">{{initials}}</span>
-  </v-avatar>
-
+    <v-avatar color="info" size="54">
+        <span class="text-h5">{{ initials }}</span>
+    </v-avatar>
 </template>
 
 <script>
 import './index.css';
 
 export default {
-    name: 'my-avatar',
+    name: 'MyAvatar',
     props: {
-      initials:String
+        initials: String
     },
-    emits: ['click'],
 
+    emits: ['click']
 };
 </script>

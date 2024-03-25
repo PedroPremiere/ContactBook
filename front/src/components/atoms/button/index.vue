@@ -1,21 +1,15 @@
 <template>
-
-  <v-btn prepend-icon="$vuetify">
-    Button
-  </v-btn>
-
+    <v-btn prepend-icon="$vuetify"> Button </v-btn>
 </template>
 
 <script>
 import './index.css';
 
 export default {
-    name: 'my-button',
+    name: 'MyButton',
 
-    props: {
-    },
+    props: {},
 
-    emits: ['click'],
-
+    emits: ['click']
 };
 </script>

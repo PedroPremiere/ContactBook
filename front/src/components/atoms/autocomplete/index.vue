@@ -1,21 +1,24 @@
 <template>
-  <v-autocomplete
-      label="Autocomplete"
-      :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
-      data-v-step="3"
-  ></v-autocomplete>
+    <v-autocomplete
+        label="Autocomplete"
+        :items="[
+            'California',
+            'Colorado',
+            'Florida',
+            'Georgia',
+            'Texas',
+            'Wyoming'
+        ]"
+        data-v-step="3"
+    ></v-autocomplete>
 </template>
 
 <script>
-
-
 export default {
-    name: 'my-autocomplete',
+    name: 'MyAutocomplete',
 
-    props: {
-    },
+    props: {},
 
-    emits: ['click'],
-
+    emits: ['click']
 };
 </script>

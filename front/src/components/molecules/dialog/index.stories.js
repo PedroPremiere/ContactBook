@@ -1,13 +1,12 @@
 import MyDialog from './index.vue';
 
-import { randProductDescription, randProductName } from '@ngneat/falso'
+import { randProductDescription, randProductName } from '@ngneat/falso';
 
 export default {
     title: 'Components/Molecules/Dialog',
     component: MyDialog,
-    tags: ['autodocs'],
+    tags: ['autodocs']
 };
-
 
 export const Primary = {
     args: {
@@ -16,5 +15,5 @@ export const Primary = {
         text: randProductDescription(),
         title: randProductName(),
         open: true
-    },
+    }
 };

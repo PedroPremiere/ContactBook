@@ -1,8 +1,8 @@
 <template>
 
-  <v-btn prepend-icon="$vuetify" stacked>
-    Button
-  </v-btn>
+    <v-btn prepend-icon="$vuetify" stacked>
+        Button
+    </v-btn>
 </template>
 
 <script>
@@ -10,7 +10,7 @@ import './button.css';
 import { reactive, computed } from 'vue';
 
 export default {
-  name: 'my-button',
+  name: 'MyButton',
 
   props: {
     label: {
