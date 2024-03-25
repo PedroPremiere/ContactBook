@@ -10,7 +10,10 @@ import './index.css';
 export default {
     name: 'MyAvatar',
     props: {
-        initials: String
+        initials: {
+            type: String,
+            default: ''
+        }
     },
 
     emits: ['click']

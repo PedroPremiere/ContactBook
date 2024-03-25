@@ -1,19 +1,6 @@
 <template>
     <v-container class="bg-surface-variant">
-        <v-row>
-            <v-col>
-                <v-btn data-v-step="5" @click="sort = 'name'">
-                    {{ $t('sortBy') }}
-                    {{ $t('name') }}
-                </v-btn>
-            </v-col>
-            <v-col>
-                <v-btn data-v-step="4" @click="sort = 'date'">
-                    {{ $t('sortBy') }}
-                    {{ $t('date') }}
-                </v-btn>
-            </v-col>
-        </v-row>
+        <my-sorting-menu @set-sorting="value => (sort = value)" />
         <v-row>
             <v-col>
                 <v-infinite-scroll
@@ -22,43 +9,10 @@
                     width="100%"
                     @load="load"
                 >
-                    <template
-                        v-for="(key, value) in sorting(cards)"
-                        :key="(key, value)"
-                    >
-                        <div v-if="sort === 'date'">
-                            <p>
-                                {{ createdTimeToNow(value) }}
-                                <v-tooltip activator="parent" location="top">{{
-                                    value
-                                }}</v-tooltip>
-                            </p>
-                        </div>
-
-                        <v-avatar v-if="sort === 'name'" color="indigo">{{
-                            value
-                        }}</v-avatar>
-
-                        <div v-for="items in chunk(key, perRow)" :key="items">
-                            <div
-                                class="d-flex justify-space-evenly mb-1 bg-surface-variant"
-                            >
-                                <div
-                                    v-for="item in items"
-                                    :key="item"
-                                    class="flex-grow-1 ma-2 pa-2"
-                                >
-                                    <my-card
-                                        :title="item.name"
-                                        :subtitle="item.phone"
-                                        :create-date="
-                                            item.createDate.toString()
-                                        "
-                                    ></my-card>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
+                    <contact-list-section
+                        :items="sorting(cards)"
+                        :sort="sort"
+                    />
                 </v-infinite-scroll>
             </v-col>
         </v-row>
@@ -67,36 +21,25 @@
 
 <script>
 import './index.css';
-import MyCard from '../card/index.vue';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { mapGetters } from 'vuex';
+import MySortingMenu from '@/components/atoms/sortingMenu/index.vue';
+import ContactListSection from '@/components/atoms/contactListSection/index.vue';
 
 export default {
     name: 'MyInfiniteScroll',
-    components: { MyCard },
+    components: {
+        MySortingMenu,
+        ContactListSection
+    },
 
     computed: {
         ...mapGetters({
             cards: 'items',
             groupBy1stLetter: 'groupBy1stLetter',
             groupByTimeAgo: 'groupByTimeAgo'
-        }),
-        perRow() {
-            switch (this.$vuetify.display.name) {
-                case 'xs':
-                    return 1;
-                case 'sm':
-                    return 1;
-                case 'md':
-                    return 2;
-                case 'lg':
-                    return 3;
-                case 'xl':
-                    return 3;
-            }
-            return 1;
-        }
+        })
     },
 
     data: () => ({
@@ -114,13 +57,8 @@ export default {
             if (this.sort === 'date') {
                 return this.groupByTimeAgo;
             }
+
             return this.groupBy1stLetter;
-        },
-        chunk(arr, size) {
-            return Array.from(
-                { length: Math.ceil(arr.length / size) },
-                (v, i) => arr.slice(i * size, i * size + size)
-            );
         },
 
         load({ side, done }) {

@@ -25,9 +25,9 @@
                 </v-col>
             </v-row>
         </v-container>
-        <v-btn class="mt-2" type="submit" :disabled="!valid" block
-            >Submit</v-btn
-        >
+        <v-btn class="mt-2" type="submit" :disabled="!valid" block>
+            Submit
+        </v-btn>
     </v-form>
 </template>
 
