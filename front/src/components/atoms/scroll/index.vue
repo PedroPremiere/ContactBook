@@ -4,10 +4,7 @@
         <v-row>
             <v-col>
                 <v-list lines="one" class="bg-surface-variant">
-                    <contact-list-section
-                        :items="sorting(cards)"
-                        :sort="sort"
-                    />
+                    <contact-list-section :items="sorting()" :sort="sort" />
                 </v-list>
             </v-col>
         </v-row>
@@ -26,6 +23,9 @@ export default {
     components: {
         MySortingMenu,
         ContactListSection
+    },
+    props: {
+        favoritesOnly: Boolean
     },
 
     computed: {

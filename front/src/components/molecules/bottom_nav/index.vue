@@ -1,54 +1,51 @@
 <template>
     <v-layout class="overflow-visible" style="height: 56px">
         <v-bottom-navigation v-model="value" :bg-color="color" mode="shift">
-            <v-btn>
-                <v-icon>mdi-television-play</v-icon>
+            <v-btn @click="changeFavoriteOnly(true)">
+                <v-icon icon="fas mdi-star" />
 
-                <span>Video</span>
+                <span>Favorites</span>
             </v-btn>
 
-            <v-btn>
-                <v-icon>mdi-music-note</v-icon>
+            <v-btn @click="changeFavoriteOnly(false)">
+                <v-icon icon=" mdi-menu" />
 
-                <span>Music</span>
-            </v-btn>
-
-            <v-btn>
-                <v-icon>mdi-book</v-icon>
-
-                <span>Book</span>
-            </v-btn>
-
-            <v-btn>
-                <v-icon>mdi-image</v-icon>
-
-                <span>Image</span>
+                <span>Contacts</span>
             </v-btn>
         </v-bottom-navigation>
     </v-layout>
 </template>
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
     name: 'MyButton',
-    props: {},
-
-    emits: ['click'],
+    emits: ['change'],
     data: () => ({ value: 1 }),
-
     computed: {
+        ...mapGetters({
+            favoriteOnly: 'favoritesOnly'
+        }),
+
         color() {
             switch (this.value) {
                 case 0:
-                    return 'blue-grey';
+                    return 'indigo';
                 case 1:
                     return 'teal';
-                case 2:
-                    return 'brown';
-                case 3:
-                    return 'indigo';
                 default:
                     return 'blue-grey';
             }
+        }
+    },
+    methods: {
+        ...mapActions({
+            changeFavoriteOnly: 'favoriteOnly'
+        })
+    },
+    mounted() {
+        if (this.favoriteOnly) {
+            this.value = 0;
         }
     }
 };

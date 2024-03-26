@@ -14,14 +14,14 @@ const vuetify = createVuetify({
             light: {
                 dark: false,
                 colors: {
-                    primary: colors.red.darken1, // #E53935
+                    primary: colors.indigo.lighten3, // #E53935
                     secondary: colors.red.lighten4 // #FFCDD2
                 }
             },
             dark: {
                 dark: true,
                 colors: {
-                    primary: colors.red.darken1, // #E53935
+                    primary: colors.indigo.lighten3, // #E53935
                     secondary: colors.red.lighten4 // #FFCDD2
                 }
             }

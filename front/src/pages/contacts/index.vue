@@ -26,7 +26,7 @@
             </v-row>
 
             <v-row no-gutters>
-                <my-scroll />
+                <my-scroll :favorites-only="favoritesOnly" />
             </v-row>
             <v-row no-gutters>
                 <my-bottom-nav />

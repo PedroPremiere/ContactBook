@@ -1,6 +1,10 @@
 <template>
     <div>
-        <v-card class="mx-auto" :subtitle="subtitle" :title="title">
+        <v-card
+            class="mx-auto pa-4 text-center bg-primary rounded-xl rounded-be-0"
+            :subtitle="subtitle"
+            :title="title"
+        >
             <template #prepend>
                 <my-avatar :initials="initials" />
             </template>
@@ -11,6 +15,8 @@
                         createDate
                     }}</v-tooltip>
                 </span>
+            </template>
+            <v-card-actions>
                 <v-container
                     class="pa-4 text-center bg-secondary rounded-xl rounded-be-0"
                 >
@@ -35,7 +41,7 @@
                         </v-col>
                     </v-row>
                 </v-container>
-            </template>
+            </v-card-actions>
         </v-card>
         <my-delete-dialog
             :open="isDeleteDialogOpen"

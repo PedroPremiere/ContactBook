@@ -95,12 +95,16 @@ const contacts = {
                 id: randUuid(),
                 favorite: false
             }
-        ]
+        ],
+        favoritesOnly: false
     }),
     getters: {
         items: state => state.contacts,
-        groupBy1stLetter: state => groupBy1stLetter(state.contacts),
-        groupByTimeAgo: state => groupByTimeAgo(state.contacts)
+        groupBy1stLetter: state =>
+            groupBy1stLetter(state.contacts, state.favoritesOnly),
+        groupByTimeAgo: state =>
+            groupByTimeAgo(state.contacts, state.favoritesOnly),
+        favoritesOnly: state => state.favoritesOnly
     },
     mutations: {
         addContact(state, data) {
@@ -129,6 +133,9 @@ const contacts = {
             );
 
             state.contacts[index].favorite = !state.contacts[index].favorite;
+        },
+        favoriteOnly(state, value) {
+            state.favoritesOnly = value;
         }
     },
     actions: {
@@ -185,6 +192,10 @@ const contacts = {
         },
         async editFavorite({ commit }, id) {
             commit('editFavorite', id);
+        },
+        async favoriteOnly({ commit }, value) {
+            console.log(value);
+            commit('favoriteOnly', value);
         }
     }
 };
