@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import './index.css';
-
 import MyContactsSeparator from '@/components/atoms/contactSeparator/index.vue';
 import MyContactRow from '@/components/atoms/contactRow/index.vue';
 

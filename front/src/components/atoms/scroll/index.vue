@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import './index.css';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { mapGetters } from 'vuex';

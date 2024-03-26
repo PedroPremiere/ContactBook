@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import './index.css';
 import MyForm from '../../atoms/form/index.vue';
 
 export default {

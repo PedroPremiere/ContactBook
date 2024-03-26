@@ -28,8 +28,6 @@
     </v-layout>
 </template>
 <script>
-import './index.css';
-
 export default {
     name: 'MyButton',
     props: {},

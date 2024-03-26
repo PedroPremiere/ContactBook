@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import './index.css';
-
 import MyCard from '@/components/atoms/card/index.vue';
 
 export default {
