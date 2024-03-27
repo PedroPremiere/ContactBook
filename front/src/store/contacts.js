@@ -68,28 +68,14 @@ const contacts = {
             commit('removeContact', id);
         },
         async edit({ commit }, contact) {
-            /*
-
-            if (contract.id) {
-                const data = await this.$axios.$put(
-                    `/contracts/${contract.id}`,
-                    contract
-                );
-
-                commit('updateContract', data);
-            } else {
-
-             */
-            //  let data = await this.$axios.$post('/contracts', contract);
-
-            commit('updateContract', contact);
-            //}
+            const data = await axios.put(`/contacts/${contact.id}`, contact);
+            console.log(data.data);
+            commit('updateContract', data.data);
         },
         async editFavorite({ commit }, id) {
             commit('editFavorite', id);
         },
         async favoriteOnly({ commit }, value) {
-            console.log(value);
             commit('favoriteOnly', value);
         }
     }
