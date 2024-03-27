@@ -29,8 +29,6 @@ const contacts = {
                 contact => contact.id === id
             );
 
-            console.log(id);
-
             state.contacts.splice(index, 1);
         },
         updateContract(state, newContact) {
@@ -65,21 +63,9 @@ const contacts = {
             commit('addContact', data.data);
         },
         async delete({ commit }, id) {
-            /*
-            if (contract.id) {
-                const data = await this.$axios.$put(
-                    `/contracts/${contract.id}`,
-                    contract
-                );
-
-                commit('updateContract', data);
-            } else {
-
-             */
-            //  let data = await this.$axios.$post('/contracts', contract);
+            await axios.delete(`/contacts/${id}`);
 
             commit('removeContact', id);
-            //}
         },
         async edit({ commit }, contact) {
             /*
