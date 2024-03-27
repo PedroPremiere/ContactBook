@@ -1,101 +1,12 @@
-import {
-    randFullName,
-    randPhoneNumber,
-    randRecentDate,
-    randUuid
-} from '@ngneat/falso';
+import axios from '@/plugins/axios';
+
 import { groupBy1stLetter } from '@/filters/groupBy1stLetter';
 import { groupByTimeAgo } from '@/filters/groupByTimeAgo';
 
 const contacts = {
     namespace: true,
     state: () => ({
-        contacts: [
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            },
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            },
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            },
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            },
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            },
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            },
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            },
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            },
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            },
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            },
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            },
-            {
-                name: randFullName(),
-                phone: randPhoneNumber(),
-                createDate: randRecentDate(),
-                id: randUuid(),
-                favorite: false
-            }
-        ],
+        contacts: [],
         favoritesOnly: false
     }),
     getters: {
@@ -107,6 +18,9 @@ const contacts = {
         favoritesOnly: state => state.favoritesOnly
     },
     mutations: {
+        setContacts(state, data) {
+            state.contacts = data;
+        },
         addContact(state, data) {
             state.contacts.push(data);
         },
@@ -139,6 +53,13 @@ const contacts = {
         }
     },
     actions: {
+        async index({ commit }) {
+            const { data } = await axios.get('/contacts');
+
+            commit('setContacts', data);
+
+            return data;
+        },
         async save({ commit }, contact) {
             /*
             if (contract.id) {
@@ -175,6 +96,7 @@ const contacts = {
         },
         async edit({ commit }, contact) {
             /*
+
             if (contract.id) {
                 const data = await this.$axios.$put(
                     `/contracts/${contract.id}`,

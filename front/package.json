@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ngneat/falso": "^7.2.0",
+    "axios": "^1.6.8",
     "babel-eslint": "^10.1.0",
     "core-js": "^3.8.3",
     "dayjs": "^1.11.10",
@@ -23,7 +24,8 @@
     "vue-i18n": "^9.1.0",
     "vue3-tour": "^0.3.4",
     "vuetify": "^3.5.11",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "workbox-precaching": "^7.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

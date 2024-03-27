@@ -24,10 +24,6 @@ export default {
         MySortingMenu,
         ContactListSection
     },
-    props: {
-        favoritesOnly: Boolean
-    },
-
     computed: {
         ...mapGetters({
             cards: 'items',

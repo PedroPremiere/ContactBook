@@ -20,7 +20,10 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 export default {
     name: 'MyContactsSeparator',
     props: {
-        value: String,
+        value: {
+            type: String,
+            default: ''
+        },
         sort: String
     },
     methods: {

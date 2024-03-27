@@ -26,7 +26,7 @@
             </v-row>
 
             <v-row no-gutters>
-                <my-scroll :favorites-only="favoritesOnly" />
+                <my-scroll />
             </v-row>
             <v-row no-gutters>
                 <my-bottom-nav />
@@ -116,13 +116,20 @@ export default {
         };
     },
     mounted() {
+        try {
+            this.index();
+        } catch (e) {
+            console.log(e);
+        }
+
         if (localStorage.Lang != null) this.$i18n.locale = localStorage.Lang;
         dayjs.locale(this.$i18n.locale);
         this.$tours['myTour'].start();
     },
     methods: {
         ...mapActions({
-            saveContact: 'save'
+            saveContact: 'save',
+            index: 'index'
         }),
         changeLanguage() {
             dayjs.locale(this.$i18n.locale);

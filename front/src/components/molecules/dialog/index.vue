@@ -33,7 +33,7 @@ export default {
     emits: ['close', 'save'],
     data() {
         return {
-            open$: Boolean
+            open$: false
         };
     },
     watch: {

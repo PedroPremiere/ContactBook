@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: ContactApi
+  description: Api for contacts Project
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- url: http://localhost:8085/api
+tags:
+- name: contacts
+  description: Everything about your Contact
+paths:
+  /contacts:
+    get:
+      tags:
+      - contacts
+      summary: Finds all Contact
+      description: Multiple status values can be provided with comma separated strings
+      operationId: findContactByStatus
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+                x-content-type: application/json
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+        "400":
+          description: Invalid status value
+      x-swagger-router-controller: Contacts
+    put:
+      tags:
+      - contacts
+      summary: Update an existing contact
+      description: Update an existing contact by Id
+      operationId: updateContact
+      requestBody:
+        description: Update an existent contact in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Contact'
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Pet not found
+        "405":
+          description: Validation exception
+      x-swagger-router-controller: Contacts
+    post:
+      tags:
+      - contacts
+      summary: Add a new contact to the store
+      description: Add a new contact to the store
+      operationId: addContact
+      requestBody:
+        description: Create a new contact in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Contact'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Contact'
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        "405":
+          description: Invalid input
+      x-swagger-router-controller: Contacts
+  /contacts/{contactId}:
+    get:
+      tags:
+      - contacts
+      summary: Find pet by ID
+      description: Returns a single Contact
+      operationId: getContactById
+      parameters:
+      - name: contactId
+        in: path
+        description: ID of Contact to return
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Contact not found
+      x-swagger-router-controller: Contacts
+    delete:
+      tags:
+      - contacts
+      summary: Deletes a contact
+      description: delete a contact
+      operationId: deleteContact
+      parameters:
+      - name: contactId
+        in: path
+        description: contactId to delete
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        "400":
+          description: Invalid pet value
+      x-swagger-router-controller: Contacts
+components:
+  schemas:
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 550e8400-e29b-41d4-a716-446655440000
+        name:
+          type: string
+          example: Vladan Kovacevic
+        createDate:
+          type: string
+        phone:
+          type: string
+          example: 100-100-100
+        favorite:
+          type: boolean
+          example: true
+      example:
+        phone: 100-100-100
+        name: Vladan Kovacevic
+        id: 550e8400-e29b-41d4-a716-446655440000
+        favorite: true
+        createDate: createDate
+  requestBodies:
+    Contact:
+      description: Contact object that needs to be added to the store
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+                example: 550e8400-e29b-41d4-a716-446655440000
+              name:
+                type: string
+                example: Vladan Kovacevic
+              phone:
+                type: string
+                example: 100-100-100
+              createDate:
+                type: string
+              favorite:
+                type: boolean
+                example: true

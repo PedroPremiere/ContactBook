@@ -17,7 +17,7 @@ export default {
     name: 'ContactListSection',
     components: { MyContactsSeparator, MyContactRow },
     props: {
-        items: Array,
+        items: Object,
         sort: String
     },
     computed: {

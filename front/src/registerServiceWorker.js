@@ -3,6 +3,7 @@
 import { register } from 'register-service-worker';
 
 //if (process.env.NODE_ENV === 'production') {
+
 register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
         console.log(
@@ -32,3 +33,16 @@ register(`${process.env.BASE_URL}service-worker.js`, {
     }
 });
 //}
+
+//}
+//window.addEventListener('fetch',);
+
+/*
+window.addEventListener('fetch', function (event) {
+    //const url = event.request.url;
+    //if (url.endsWith('style.css')) {
+    event.respondWith('your_file_response');
+    //}
+});
+
+ */
