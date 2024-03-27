@@ -26,6 +26,7 @@ function seed() {
 
 self.addEventListener('install', () => {
     seed();
+
     console.log('SW zainstalowany!');
 });
 
@@ -33,16 +34,35 @@ self.addEventListener('activate', event => {
     event.waitUntil(self.clients.claim());
 });
 
-self.addEventListener('fetch', function (event) {
+self.addEventListener('fetch', event => {
     const url = event.request.url;
     const method = event.request.method;
 
     if (method === 'GET' && url.endsWith('contacts')) {
         const myResponse = Response.json(contacts, {
-            status: 200,
-            headers: { contentType: 'application/json' }
+            status: 200
         });
 
         event.respondWith(myResponse);
+    }
+
+    if (method === 'POST' && url.endsWith('contacts')) {
+        event.respondWith(
+            (async () => {
+                let clonedBody = await event.request.json();
+
+                contacts.push(clonedBody);
+                return Response.json(clonedBody, {
+                    status: 200,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods':
+                            'GET, POST, PATCH, PUT, DELETE,OPTIONS',
+                        'Access-Control-Allow-Headers':
+                            'Origin, Content-Type, X-Auth-Token'
+                    }
+                });
+            })()
+        );
     }
 });

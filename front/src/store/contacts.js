@@ -61,21 +61,8 @@ const contacts = {
             return data;
         },
         async save({ commit }, contact) {
-            /*
-            if (contract.id) {
-                const data = await this.$axios.$put(
-                    `/contracts/${contract.id}`,
-                    contract
-                );
-
-                commit('updateContract', data);
-            } else {
-
-             */
-            //  let data = await this.$axios.$post('/contracts', contract);
-
-            commit('addContact', contact);
-            //}
+            const data = await axios.post(`/contacts`, contact);
+            commit('addContact', data.data);
         },
         async delete({ commit }, id) {
             /*

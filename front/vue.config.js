@@ -23,5 +23,10 @@ module.exports = defineConfig({
         workboxOptions: {
             swSrc: './src/service-worker.js'
         }
+    },
+    configureWebpack: {
+        devServer: {
+            headers: { 'Access-Control-Allow-Origin': '*' }
+        }
     }
 });
