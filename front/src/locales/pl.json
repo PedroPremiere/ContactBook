@@ -2,5 +2,31 @@
   "title": "Kontakty",
   "sortBy": "Sortuj po",
   "name": "nazwie",
-  "date": "dacie"
+  "date": "dacie",
+  "tour": {
+    "step0": {
+      "header": "Language/Sprache/Język/Taal",
+      "content": "Zmień język"
+    },
+    "step1": {
+      "header": "Tu dodasz nowy kontakt",
+      "content": "Najlepszy sposób na dodanie kotnatków."
+    },
+    "step2": {
+      "header": "Wyszukaj",
+      "content": "Najprostszy sposób wyszukania kontaktów. Po prostu zacznij pisać"
+    },
+    "step3": {
+      "content": "Mozesz sortowac po dacie"
+    },
+    "step4": {
+      "content": "Albo po nazwie"
+    },
+    "step5": {
+      "content": "Mozesz filtrować po ulubionych"
+    },
+    "step6": {
+      "content": "albo zobaczyć wszystkie kontakty"
+    }
+  }
 }

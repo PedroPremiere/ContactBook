@@ -1,13 +1,13 @@
 <template>
     <v-layout class="overflow-visible" style="height: 56px">
         <v-bottom-navigation v-model="value" :bg-color="color" mode="shift">
-            <v-btn @click="changeFavoriteOnly(true)">
+            <v-btn data-v-step="favoriteOnly" @click="changeFavoriteOnly(true)">
                 <v-icon icon="fas mdi-star" />
 
                 <span>Favorites</span>
             </v-btn>
 
-            <v-btn @click="changeFavoriteOnly(false)">
+            <v-btn data-v-step="allContacts" @click="changeFavoriteOnly(false)">
                 <v-icon icon=" mdi-menu" />
 
                 <span>Contacts</span>

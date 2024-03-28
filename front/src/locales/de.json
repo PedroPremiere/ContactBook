@@ -2,5 +2,31 @@
   "title": "Kontakte",
   "sortBy": "Sortiere nach",
   "name": "name",
-  "date": "Datum"
+  "date": "Datum",
+  "tour": {
+    "step0": {
+      "header": "Language/Sprache/Język/Taal",
+      "content": "Ändern Sie hier die Sprache"
+    },
+    "step1": {
+      "header": "Füge neuen Kontakt hinzu",
+      "content": "Der beste Weg, um einen neuen Kontakt hinzuzufügen."
+    },
+    "step2": {
+      "header": "Suchen",
+      "content": "Der einfachste Weg, Kontakte nach Namen zu filtern. Fangen Sie einfach an zu tippen."
+    },
+    "step3": {
+      "content": "Sie können Kontakte nach Datum sortieren"
+    },
+    "step4": {
+      "content": "Oder hier mit Namen"
+    },
+    "step5": {
+      "content": "Sie können Kontakte nach Favoriten filtern"
+    },
+    "step6": {
+      "content": "oder alle ansehen"
+    }
+}
 }

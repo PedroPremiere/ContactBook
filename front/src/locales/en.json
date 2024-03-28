@@ -1,6 +1,32 @@
 {
-  "title": "Contacten",
-  "sortBy": "Sorteer op",
+  "title": "Contacts",
+  "sortBy": "sort by",
   "name": "name",
-  "date": "date"
+  "date": "date",
+  "tour": {
+    "step0": {
+      "header": "Language/Sprache/Język/Taal",
+      "content": "Change language here."
+    },
+    "step1": {
+      "header": "Add new contact",
+      "content": "The best way to add new contact."
+    },
+    "step2": {
+      "header": "Search",
+      "content": "The easiest way to filter contacts by name. Just start typing."
+    },
+    "step3": {
+      "content": "You can sort contacts by date"
+    },
+    "step4": {
+      "content": "Or here by name"
+    },
+    "step5": {
+      "content": "you can filter contacts by favorites"
+    },
+    "step6": {
+      "content": "or see all of them"
+    }
+  }
 }

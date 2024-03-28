@@ -2,5 +2,31 @@
   "title": "Kontakte",
   "sortBy": "Sortiere nach",
   "name": "name",
-  "date": "Datum"
+  "date": "Datum",
+  "tour": {
+    "step0": {
+      "header": "Language/Sprache/Język/Taal",
+      "content": "Wijzig hier de taal."
+    },
+    "step1": {
+      "header": "Voeg nieuw contact toe",
+      "content": "De beste manier om nieuw contact toe te voegen."
+    },
+    "step2": {
+      "header": "Zoekopdracht",
+      "content": "De eenvoudigste manier om contacten op naam te filteren. Begin gewoon met typen."
+    },
+    "step3": {
+      "content": "U kunt contacten sorteren op datum"
+    },
+    "step4": {
+      "content": "Of hier op naam"
+    },
+    "step5": {
+      "content": "u kunt contacten filteren op favorieten"
+    },
+    "step6": {
+      "content": "of bekijk ze allemaal"
+    }
+  }
 }

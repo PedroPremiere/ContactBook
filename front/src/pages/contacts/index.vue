@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-container class="bg-surface-variant rounded-t-xl">
+        <v-container class="bg-surface-variant rounded-t-xl h-screen">
             <v-row no-gutters>
                 <v-combobox
                     id="v-step-0"
@@ -32,7 +32,7 @@
                 <my-bottom-nav />
             </v-row>
         </v-container>
-        <v-tour name="myTour" :steps="steps"></v-tour>
+        <v-tour name="myTour" :steps="steps()" :callbacks="myCallbacks" />
         <my-dialog
             :open="isDialogOpen"
             :text="selectedDialogText.text"
@@ -76,43 +76,10 @@ export default {
                 title: '',
                 text: ''
             },
-            steps: [
-                {
-                    target: '#v-step-0', // We're using document.querySelector() under the hood
-                    header: {
-                        title: 'Get Started'
-                    },
-                    content: `Discover <strong>Vue Tour</strong>!`
-                },
-                {
-                    target: '.v-step-1',
-                    content: 'An awesome plugin made with Vue.js!'
-                },
-                {
-                    target: '[data-v-step="2"]',
-                    content:
-                        "Try it, you'll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.",
-                    params: {
-                        placement: 'top'
-                    }
-                },
-                {
-                    target: '[data-v-step="4"]',
-                    content:
-                        "Try it, you'll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.",
-                    params: {
-                        placement: 'top'
-                    }
-                },
-                {
-                    target: '[data-v-step="5"]',
-                    content:
-                        "Try it, you'll love it!<br>You can put HTML in the steps and completely customize the DOM to suit your needs.",
-                    params: {
-                        placement: 'top'
-                    }
-                }
-            ]
+            myCallbacks: {
+                onFinish: this.onTourFinish,
+                onSkip: this.onTourFinish
+            }
         };
     },
     mounted() {
@@ -123,14 +90,73 @@ export default {
         }
 
         if (localStorage.Lang != null) this.$i18n.locale = localStorage.Lang;
+
         dayjs.locale(this.$i18n.locale);
-        this.$tours['myTour'].start();
+        if (localStorage.tour != 'done') {
+            this.$tours['myTour'].start();
+        }
     },
     methods: {
         ...mapActions({
             saveContact: 'save',
             index: 'index'
         }),
+        steps() {
+            return [
+                {
+                    target: '#v-step-0',
+                    header: {
+                        title: this.$t('tour.step0.header')
+                    },
+                    content: this.$t('tour.step0.content')
+                },
+                {
+                    target: '.v-step-1',
+                    header: {
+                        title: this.$t('tour.step1.header')
+                    },
+                    content: this.$t('tour.step1.content')
+                },
+                {
+                    target: '[data-v-step="2"]',
+                    header: {
+                        title: this.$t('tour.step2.header')
+                    },
+                    content: this.$t('tour.step2.content'),
+                    params: {
+                        placement: 'top'
+                    }
+                },
+                {
+                    target: '[data-v-step="4"]',
+                    content: this.$t('tour.step3.content'),
+                    params: {
+                        placement: 'top'
+                    }
+                },
+                {
+                    target: '[data-v-step="5"]',
+                    content: this.$t('tour.step4.content'),
+                    params: {
+                        placement: 'top'
+                    }
+                },
+                {
+                    target: '[data-v-step="favoriteOnly"]',
+                    content: this.$t('tour.step5.content'),
+                    params: {
+                        placement: 'top'
+                    }
+                },
+                {
+                    target: '[data-v-step="allContacts"]',
+                    content: this.$t('tour.step6.content'),
+                    params: {
+                        placement: 'top'
+                    }
+                }
+            ];
+        },
         changeLanguage() {
             dayjs.locale(this.$i18n.locale);
             localStorage.Lang = this.$i18n.locale;
@@ -155,6 +181,9 @@ export default {
         save(value) {
             console.log(value);
             this.saveContact(value);
+        },
+        onTourFinish() {
+            localStorage.tour = 'done';
         }
     }
 };
