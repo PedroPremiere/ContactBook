@@ -26,7 +26,7 @@ const config = {
     webpackFinal: async config => {
         config.resolve.alias = {
             ...config.resolve.alias,
-            '@/components': path.resolve(__dirname, '../src/components')
+            '@': path.resolve(__dirname, '../src')
         };
 
         return config;

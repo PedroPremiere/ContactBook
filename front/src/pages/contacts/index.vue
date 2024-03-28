@@ -1,36 +1,13 @@
 <template>
     <div>
         <v-container class="bg-surface-variant rounded-t-xl h-screen">
-            <v-row no-gutters>
-                <v-combobox
-                    id="v-step-0"
-                    v-model="$root.$i18n.locale"
-                    label="Language"
-                    :items="langs"
-                    @update:menu="changeLanguage"
-                ></v-combobox>
-            </v-row>
-            <v-row
-                no-gutters
-                class="d-flex justify-space-between mb-6 bg-surface-variant"
-            >
-                <h1>{{ $t('title') }}</h1>
-                <v-icon
-                    icon="fas mdi-plus"
-                    class="v-step-1"
-                    @click="setNewContactDialog"
-                />
-            </v-row>
-            <v-row no-gutters>
-                <my-autocomplete data-v-step="2" />
-            </v-row>
-
-            <v-row no-gutters>
-                <my-scroll />
-            </v-row>
-            <v-row no-gutters>
-                <my-bottom-nav />
-            </v-row>
+            <top-menu
+                :langs="langs"
+                @setNewContactDialog="setNewContactDialog"
+                @changeLanguage="changeLanguage"
+            />
+            <main-content />
+            <bottom-page />
         </v-container>
         <v-tour name="myTour" :steps="steps()" :callbacks="myCallbacks" />
         <my-dialog
@@ -45,27 +22,31 @@
 </template>
 
 <script>
-import MyBottomNav from '../../components/molecules/bottom_nav/index.vue';
-import MyScroll from '../../components/atoms/scroll/index.vue';
-import MyAutocomplete from '../../components/atoms/autocomplete/index.vue';
 import dayjs from 'dayjs';
-// eslint-disable-next-line no-unused-vars
+
 import 'dayjs/locale/pl';
 import 'dayjs/locale/de';
 import 'dayjs/locale/nl';
+
 import MyDialog from '../../components/molecules/dialog/index.vue';
 import { mapActions } from 'vuex';
 import MyDeleteDialog from '@/components/molecules/deleteDialog/index.vue';
+import { stepsMixin } from '@/services/tour/steps.mixin';
+import { changeLanguage } from '@/services/i18nLanguages/changeLanguage.mixin';
+import MainContent from '@/components/organisms/mainContent/index.vue';
+import BottomPage from '@/components/organisms/bottomNav/index.vue';
+import TopMenu from '@/components/organisms/topMenu/index.vue';
 
 export default {
     name: 'ContactsPage',
     components: {
         MyDeleteDialog,
-        MyBottomNav,
-        MyScroll,
-        MyAutocomplete,
-        MyDialog
+        MyDialog,
+        MainContent,
+        BottomPage,
+        TopMenu
     },
+    mixins: [stepsMixin, changeLanguage],
     props: {},
     emits: ['click'],
     data() {
@@ -101,66 +82,6 @@ export default {
             saveContact: 'save',
             index: 'index'
         }),
-        steps() {
-            return [
-                {
-                    target: '#v-step-0',
-                    header: {
-                        title: this.$t('tour.step0.header')
-                    },
-                    content: this.$t('tour.step0.content')
-                },
-                {
-                    target: '.v-step-1',
-                    header: {
-                        title: this.$t('tour.step1.header')
-                    },
-                    content: this.$t('tour.step1.content')
-                },
-                {
-                    target: '[data-v-step="2"]',
-                    header: {
-                        title: this.$t('tour.step2.header')
-                    },
-                    content: this.$t('tour.step2.content'),
-                    params: {
-                        placement: 'top'
-                    }
-                },
-                {
-                    target: '[data-v-step="4"]',
-                    content: this.$t('tour.step3.content'),
-                    params: {
-                        placement: 'top'
-                    }
-                },
-                {
-                    target: '[data-v-step="5"]',
-                    content: this.$t('tour.step4.content'),
-                    params: {
-                        placement: 'top'
-                    }
-                },
-                {
-                    target: '[data-v-step="favoriteOnly"]',
-                    content: this.$t('tour.step5.content'),
-                    params: {
-                        placement: 'top'
-                    }
-                },
-                {
-                    target: '[data-v-step="allContacts"]',
-                    content: this.$t('tour.step6.content'),
-                    params: {
-                        placement: 'top'
-                    }
-                }
-            ];
-        },
-        changeLanguage() {
-            dayjs.locale(this.$i18n.locale);
-            localStorage.Lang = this.$i18n.locale;
-        },
         closeDialog() {
             this.isDialogOpen = false;
         },
@@ -179,7 +100,6 @@ export default {
             this.isDialogOpen = true;
         },
         save(value) {
-            console.log(value);
             this.saveContact(value);
         },
         onTourFinish() {

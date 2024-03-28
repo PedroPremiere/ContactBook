@@ -1,7 +1,7 @@
 import MyScroll from './index.vue';
 
 export default {
-    title: 'Components/Atoms/Scroll',
+    title: 'Components/Molecules/Scroll',
     component: MyScroll,
     tags: ['autodocs']
 };

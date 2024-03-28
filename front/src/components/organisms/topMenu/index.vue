@@ -1,0 +1,44 @@
+<template>
+    <v-row no-gutters>
+        <v-container>
+            <v-row no-gutters>
+                <v-combobox
+                    id="v-step-0"
+                    v-model="$root.$i18n.locale"
+                    label="Language"
+                    :items="langs"
+                    @update:menu="changeLanguage"
+                ></v-combobox>
+            </v-row>
+            <v-row
+                no-gutters
+                class="d-flex justify-space-between mb-6 bg-surface-variant"
+            >
+                <h1>{{ $t('title') }}</h1>
+                <v-icon
+                    icon="fas mdi-plus"
+                    class="v-step-1"
+                    @click="setNewContactDialog"
+                />
+            </v-row>
+        </v-container>
+    </v-row>
+</template>
+
+<script>
+export default {
+    name: 'TopMenu',
+    props: {
+        langs: Array
+    },
+    emits: ['setNewContactDialog', 'changeLanguage'],
+    methods: {
+        setNewContactDialog() {
+            this.$emit('setNewContactDialog');
+        },
+        changeLanguage() {
+            this.$emit('changeLanguage');
+        }
+    }
+};
+</script>
