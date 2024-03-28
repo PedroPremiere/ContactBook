@@ -7,7 +7,7 @@
                         v-model="firstName$"
                         :counter="10"
                         :rules="nameRules"
-                        label="First name"
+                        :label="$t('dialog.name')"
                         required
                     ></v-text-field>
                 </v-col>
@@ -15,17 +15,31 @@
             <v-row>
                 <v-col cols="12">
                     <v-text-field
-                        v-model="email$"
-                        :rules="emailRules"
-                        label="E-mail"
+                        v-model="phone$"
+                        :rules="phoneRules"
+                        :label="$t('dialog.phone')"
                         required
                     ></v-text-field>
                 </v-col>
             </v-row>
+            <v-row>
+                <v-col cols="6">
+                    <v-btn class="mt-2" block @click="close()">
+                        {{ $t('Close') }}
+                    </v-btn>
+                </v-col>
+                <v-col cols="6">
+                    <v-btn
+                        class="mt-2"
+                        :disabled="!valid"
+                        block
+                        @click="save()"
+                    >
+                        {{ $t('submit') }}
+                    </v-btn>
+                </v-col>
+            </v-row>
         </v-container>
-        <v-btn class="mt-2" :disabled="!valid" block @click="save()">
-            Submit
-        </v-btn>
     </v-form>
 </template>
 
@@ -37,7 +51,7 @@ export default {
             type: String,
             default: ''
         },
-        email: {
+        phone: {
             type: String,
             default: ''
         }
@@ -47,7 +61,7 @@ export default {
     data: () => ({
         valid: false,
         firstName$: '',
-        email$: '',
+        phone$: '',
         nameRules: [
             value => {
                 if (value) return true;
@@ -58,6 +72,18 @@ export default {
                 if (value?.length <= 30) return true;
 
                 return 'Name must be less than 30 characters.';
+            }
+        ],
+        phoneRules: [
+            value => {
+                if (value) return true;
+
+                return 'Phone is requred.';
+            },
+            value => {
+                if (/\d/g.test(value) && value.length < 15) return true;
+
+                return 'Phone must be valid.';
             }
         ],
         emailRules: [
@@ -74,16 +100,19 @@ export default {
         ]
     }),
     mounted() {
-        this.email$ = this.email;
+        this.phone$ = this.phone;
         this.firstName$ = this.firstname;
     },
     methods: {
         save() {
             this.$emit('save', {
                 name: this.firstName$,
-                phone: this.email$,
+                phone: this.phone$,
                 createDate: Date.now().toString()
             });
+        },
+        close() {
+            this.$emit('close');
         }
     }
 };

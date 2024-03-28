@@ -28,5 +28,11 @@
     "step6": {
       "content": "oder alle ansehen"
     }
-}
+  },
+  "dialog": {
+    "name": "Name",
+    "phone": "Telefon",
+    "submit": "OK",
+    "close": "Kündigen"
+  }
 }

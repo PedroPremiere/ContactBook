@@ -28,5 +28,11 @@
     "step6": {
       "content": "albo zobaczyć wszystkie kontakty"
     }
+  },
+  "dialog": {
+    "name": "Imie",
+    "phone": "Telefon",
+    "submit": "OK",
+    "close": "Anuluj"
   }
 }

@@ -28,5 +28,11 @@
     "step6": {
       "content": "or see all of them"
     }
+  },
+  "dialog": {
+    "name": "Name",
+    "phone": "Phone",
+    "submit": "OK",
+    "close": "Close"
   }
 }

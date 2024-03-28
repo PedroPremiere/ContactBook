@@ -2,11 +2,13 @@
     <v-dialog v-model="open$" class="w-75" persistent>
         <v-card :text="text" :title="title">
             <v-card-item>
-                <my-form :firstname="name" :email="phone" @save="save" />
+                <my-form
+                    :firstname="name"
+                    :phone="phone"
+                    @save="save"
+                    @close="close"
+                />
             </v-card-item>
-            <template #actions>
-                <v-btn class="ms-auto" text="Ok" @click="close"></v-btn>
-            </template>
         </v-card>
     </v-dialog>
 </template>

@@ -28,5 +28,11 @@
     "step6": {
       "content": "of bekijk ze allemaal"
     }
+  },
+  "dialog": {
+    "name": "Name",
+    "phone": "Telefoon",
+    "submit": "OK",
+    "close": "Annuleren"
   }
 }
