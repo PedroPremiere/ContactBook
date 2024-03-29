@@ -1,13 +1,7 @@
 <template>
     <div class="d-flex justify-space-evenly mb-1 bg-surface-variant">
         <div v-for="item in items" :key="item.id" class="flex-grow-1 ma-2 pa-2">
-            <my-card
-                :id="item.id"
-                :title="item.name"
-                :subtitle="item.phone"
-                :favorite="item.favorite"
-                :create-date="item.createDate.toString()"
-            ></my-card>
+            <my-card :contact="item"></my-card>
         </div>
     </div>
 </template>
