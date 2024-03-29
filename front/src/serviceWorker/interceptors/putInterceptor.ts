@@ -1,11 +1,19 @@
-export async function deleteInterceptor(url, contacts) {
+import { IContact } from '@/types/contact';
+
+export async function putInterceptor(
+    event: FetchEvent,
+    url: string,
+    contacts: IContact[]
+) {
+    const clonedBody = await event.request.json();
+
     const id = url.toString().split('/').slice(-1).join('');
 
     const index = contacts.findIndex(contact => contact.id === id);
 
-    contacts.splice(index, 1);
+    contacts[index] = clonedBody;
 
-    return Response.json(id, {
+    return new Response(JSON.stringify(contacts[index]), {
         status: 200,
         headers: {
             'Access-Control-Allow-Origin': '*',

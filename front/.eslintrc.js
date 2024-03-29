@@ -1,5 +1,18 @@
 module.exports = {
-    extends: ['eslint:recommended', 'plugin:vue/recommended'],
+    extends: [
+        'eslint:recommended',
+        'plugin:vue/recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:vue/base',
+        'eslint:recommended',
+        'plugin:vue/vue3-recommended',
+        'plugin:vue/essential',
+        'plugin:@typescript-eslint/recommended'
+        //'plugin:prettier/recommended'
+        //'eslint-config-prettier'
+    ],
+    //parser: 'vue-eslint-parser',
+    parser: 'vue-eslint-parser',
     rules: {
         'no-unused-vars': [
             'error',
@@ -12,13 +25,16 @@ module.exports = {
         'vue/multiline-html-element-content-newline': 'off'
     },
     parserOptions: {
-        sourceType: 'script'
+        sourceType: 'script',
+        ecmaFeatures: {
+            jsx: true
+        },
+        parser: '@typescript-eslint/parser'
     },
     overrides: [
         {
             files: ['src/**/*'],
             parserOptions: {
-                parser: 'babel-eslint',
                 sourceType: 'module'
             },
             env: {
@@ -30,6 +46,7 @@ module.exports = {
         $: true,
         require: true,
         process: true,
-        module: true
+        module: true,
+        $tours: true
     }
 };

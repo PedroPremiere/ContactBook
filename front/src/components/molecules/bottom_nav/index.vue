@@ -38,15 +38,15 @@ export default {
             }
         }
     },
-    methods: {
-        ...mapActions({
-            changeFavoriteOnly: 'favoriteOnly'
-        })
-    },
     mounted() {
         if (this.favoriteOnly) {
             this.value = 0;
         }
+    },
+    methods: {
+        ...mapActions({
+            changeFavoriteOnly: 'favoriteOnly'
+        })
     }
 };
 </script>

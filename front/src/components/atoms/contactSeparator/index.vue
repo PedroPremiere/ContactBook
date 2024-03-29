@@ -13,24 +13,28 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
     name: 'MyContactsSeparator',
     props: {
         value: {
             type: String,
             default: ''
         },
-        sort: String
+        sort: {
+            type: String,
+            default: 'name'
+        }
     },
     methods: {
-        createdTimeToNow() {
+        createdTimeToNow(value: string): string {
             dayjs.extend(relativeTime);
-            return dayjs(this.createDate).fromNow();
+            return dayjs(value).fromNow();
         }
     }
-};
+});
 </script>

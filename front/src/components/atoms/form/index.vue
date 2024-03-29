@@ -43,8 +43,10 @@
     </v-form>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
     name: 'MyForm',
     props: {
         firstname: {
@@ -57,42 +59,42 @@ export default {
         }
     },
 
-    emits: ['save'],
+    emits: ['save', 'close'],
     data: () => ({
         valid: false,
         firstName$: '',
         phone$: '',
         nameRules: [
-            value => {
+            (value: string) => {
                 if (value) return true;
 
                 return 'Name is required.';
             },
-            value => {
+            (value: string) => {
                 if (value?.length <= 30) return true;
 
                 return 'Name must be less than 30 characters.';
             }
         ],
         phoneRules: [
-            value => {
+            (value: string) => {
                 if (value) return true;
 
                 return 'Phone is requred.';
             },
-            value => {
+            (value: string) => {
                 if (/\d/g.test(value) && value.length < 15) return true;
 
                 return 'Phone must be valid.';
             }
         ],
         emailRules: [
-            value => {
+            (value: string) => {
                 if (value) return true;
 
                 return 'E-mail is requred.';
             },
-            value => {
+            (value: string) => {
                 if (/.+@.+\..+/.test(value)) return true;
 
                 return 'E-mail must be valid.';
@@ -115,5 +117,5 @@ export default {
             this.$emit('close');
         }
     }
-};
+});
 </script>

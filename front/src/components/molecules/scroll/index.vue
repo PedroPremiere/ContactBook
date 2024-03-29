@@ -24,6 +24,11 @@ export default {
         MySortingMenu,
         ContactListSection
     },
+    data: () => ({
+        sort: 'name',
+        size: 80,
+        virtualLength: 12
+    }),
     computed: {
         ...mapGetters({
             cards: 'items',
@@ -31,13 +36,6 @@ export default {
             groupByTimeAgo: 'groupByTimeAgo'
         })
     },
-
-    data: () => ({
-        sort: 'name',
-        size: 80,
-        virtualLength: 12
-    }),
-
     methods: {
         createdTimeToNow(createDate) {
             dayjs.extend(relativeTime);

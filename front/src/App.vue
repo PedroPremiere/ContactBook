@@ -11,15 +11,16 @@
     </div>
 </template>
 
-<script>
+<script lang="tsx">
 import ContactsPage from '@/pages/contacts/index.vue';
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
     name: 'App',
     components: {
         ContactsPage
     }
-};
+});
 </script>
 
 <style>

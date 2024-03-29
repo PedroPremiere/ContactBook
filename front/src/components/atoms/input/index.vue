@@ -9,8 +9,10 @@
     </v-text-field>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
     name: 'MyInput',
     props: {},
 
@@ -20,12 +22,12 @@ export default {
         firstname: '',
         lastname: '',
         nameRules: [
-            value => {
+            (value: string) => {
                 if (value) return true;
 
                 return 'Name is required.';
             },
-            value => {
+            (value: string) => {
                 if (value?.length <= 20) return true;
 
                 return 'Name must be less than 20 characters.';
@@ -33,17 +35,17 @@ export default {
         ],
         email: '',
         emailRules: [
-            value => {
+            (value: string) => {
                 if (value) return true;
 
-                return 'E-mail is requred.';
+                return 'E-mail is required.';
             },
-            value => {
+            (value: string) => {
                 if (/.+@.+\..+/.test(value)) return true;
 
                 return 'E-mail must be valid.';
             }
         ]
     })
-};
+});
 </script>

@@ -20,9 +20,9 @@ export default {
     name: 'MyDialog',
     components: { MyForm },
     props: {
-        text: String,
-        title: String,
-        open: Boolean,
+        text: { type: String, required: true },
+        title: { type: String, required: true },
+        open: { type: Boolean, default: false },
         name: {
             type: String,
             default: ''

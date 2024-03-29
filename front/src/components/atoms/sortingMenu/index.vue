@@ -15,15 +15,17 @@
     </v-row>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
     name: 'MySortingMenu',
     props: {},
     emits: ['setSorting'],
     methods: {
-        setSorting(value) {
+        setSorting(value: string) {
             this.$emit('setSorting', value);
         }
     }
-};
+});
 </script>

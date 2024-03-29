@@ -46,7 +46,7 @@
         <my-delete-dialog
             :open="isDeleteDialogOpen"
             @close="isDeleteDialogOpen = false"
-            @removeItem="removeItem"
+            @remove-item="removeItem"
         />
         <my-dialog
             :open="isEditDialogOpen"
@@ -60,23 +60,25 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import MyAvatar from '../avatar/index.vue';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import MyDeleteDialog from '@/components/molecules/deleteDialog/index.vue';
 import { mapActions } from 'vuex';
 import MyDialog from '@/components/molecules/dialog/index.vue';
+import { defineComponent } from 'vue';
+import { IContact } from '@/types/contact';
 
-export default {
+export default defineComponent({
     name: 'MyCard',
     components: { MyDialog, MyAvatar, MyDeleteDialog },
     props: {
-        title: String,
-        subtitle: String,
-        createDate: String,
-        id: String,
-        favorite: Boolean
+        title: { type: String, default: '' },
+        subtitle: { type: String, default: '' },
+        createDate: { type: String, default: '' },
+        id: { type: String, default: '' },
+        favorite: { type: Boolean, default: false }
     },
     emits: ['click'],
     data() {
@@ -117,7 +119,7 @@ export default {
         closeEditDialog() {
             this.isEditDialogOpen = false;
         },
-        edit(value) {
+        edit(value: IContact) {
             this.editContact({
                 id: this.id,
                 phone: value.phone,
@@ -125,5 +127,5 @@ export default {
             });
         }
     }
-};
+});
 </script>

@@ -1,24 +1,37 @@
 <template>
     <div>
-        <div v-for="(key, value) in items" :key="(key, value)">
-            <my-contacts-separator :sort="sort" :value="value" />
-            <div v-for="subItems in chunk(key, perRow)" :key="subItems">
+        <div v-for="(value, key) in items" :key="key">
+            <my-contacts-separator :sort="sort" :value="key.toString()" />
+            <div
+                v-for="(subItems, keySubItems) in chunk(value, perRow)"
+                :key="keySubItems"
+            >
                 <my-contact-row :items="subItems" />
             </div>
         </div>
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import MyContactsSeparator from '@/components/atoms/contactSeparator/index.vue';
 import MyContactRow from '@/components/atoms/contactRow/index.vue';
+import { IContact } from '@/types/contact';
+import { defineComponent, PropType } from 'vue';
 
-export default {
+export default defineComponent({
     name: 'ContactListSection',
     components: { MyContactsSeparator, MyContactRow },
     props: {
-        items: Object,
-        sort: String
+        items: {
+            type: Object as PropType<Record<string, IContact[]>>,
+            default: () => {
+                return {};
+            }
+        },
+        sort: {
+            type: String,
+            default: 'name'
+        }
     },
     computed: {
         perRow() {
@@ -39,12 +52,12 @@ export default {
     },
 
     methods: {
-        chunk(arr, size) {
+        chunk(arr: IContact[], size: number) {
             return Array.from(
                 { length: Math.ceil(arr.length / size) },
                 (v, i) => arr.slice(i * size, i * size + size)
             );
         }
     }
-};
+});
 </script>

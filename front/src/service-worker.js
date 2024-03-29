@@ -6,6 +6,8 @@ import { deleteInterceptor } from '@/serviceWorker/interceptors/deleteIntercepto
 import { postInterceptor } from '@/serviceWorker/interceptors/postInterceptor';
 import { indexInterceptor } from '@/serviceWorker/interceptors/indexInterceptor';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 precacheAndRoute(self.__WB_MANIFEST);
 
 const contacts = [];
@@ -23,7 +25,7 @@ self.addEventListener('fetch', event => {
     const method = event.request.method;
 
     if (method === 'GET' && url.endsWith('contacts')) {
-        event.respondWith(indexInterceptor(contacts, event));
+        event.respondWith(indexInterceptor(contacts));
     }
 
     if (method === 'POST' && url.endsWith('contacts')) {

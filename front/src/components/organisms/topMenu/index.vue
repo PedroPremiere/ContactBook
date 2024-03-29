@@ -29,7 +29,10 @@
 export default {
     name: 'TopMenu',
     props: {
-        langs: Array
+        langs: {
+            type: Array,
+            required: true
+        }
     },
     emits: ['setNewContactDialog', 'changeLanguage'],
     methods: {

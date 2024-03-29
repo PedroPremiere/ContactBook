@@ -4,8 +4,10 @@
     </v-avatar>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
     name: 'MyAvatar',
     props: {
         initials: {
@@ -15,5 +17,5 @@ export default {
     },
 
     emits: ['click']
-};
+});
 </script>
