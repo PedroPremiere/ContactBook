@@ -1,10 +1,7 @@
 <template>
     <v-row no-gutters>
-        <v-container class="pa-0 mx-0">
-            <v-row no-gutters>
-                <my-scroll />
-            </v-row>
-        </v-container>
+        <my-scroll />
+        <div class="mx-0 mb-7 pa-7"></div>
     </v-row>
 </template>
 

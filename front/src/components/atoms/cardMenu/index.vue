@@ -24,7 +24,6 @@
 </template>
 
 <script lang="ts">
-import { mapActions } from 'vuex';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
@@ -32,16 +31,16 @@ export default defineComponent({
     props: {
         favorite: { type: Boolean, default: false }
     },
-    emits: ['openDeleteDialog', 'openEditDialog'],
+    emits: ['openDeleteDialog', 'openEditDialog', 'editFavorite'],
     methods: {
-        ...mapActions({
-            editFavorite: 'editFavorite'
-        }),
         openDeleteDialog() {
             this.$emit('openDeleteDialog');
         },
         openEditDialog() {
             this.$emit('openEditDialog');
+        },
+        editFavorite() {
+            this.$emit('editFavorite');
         }
     }
 });

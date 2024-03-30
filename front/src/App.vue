@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <contacts-page />
-    </div>
+    <contacts-page />
 </template>
 
 <script lang="tsx">
@@ -23,5 +21,9 @@ export default defineComponent({
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+}
+body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 </style>

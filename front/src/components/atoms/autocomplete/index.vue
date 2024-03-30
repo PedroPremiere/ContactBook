@@ -10,12 +10,13 @@
             'Wyoming'
         ]"
         data-v-step="3"
+        class="w-50"
     />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
+//todo implement
 export default defineComponent({
     name: 'MyAutocomplete',
 

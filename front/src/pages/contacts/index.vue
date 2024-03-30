@@ -1,23 +1,24 @@
 <template>
-    <div>
-        <v-container class="bg-white h-screen pa-0">
-            <top-menu
-                :langs="langs"
-                @change-language="changeLanguage($i18n.locale)"
-            />
-
-            <main-content />
-            <bottom-page @set-new-contact-dialog="setNewContactDialog" />
-        </v-container>
-        <v-tour name="myTour" :steps="steps()" :callbacks="myCallbacks" />
-        <my-dialog
-            :open="isDialogOpen"
-            :text="selectedDialogText.text"
-            :title="selectedDialogText.title"
-            @close="closeDialog"
-            @save="save"
+    <v-app>
+        <top-menu
+            :langs="langs"
+            @change-language="changeLanguage($i18n.locale)"
         />
-    </div>
+        <v-main class="h-screen">
+            <v-container class="bg-white h-screen pa-0 mb-3 mx-auto">
+                <main-content class="h-100" />
+            </v-container>
+            <v-tour name="myTour" :steps="steps()" :callbacks="myCallbacks" />
+            <my-dialog
+                :open="isDialogOpen"
+                :text="selectedDialogText.text"
+                :title="selectedDialogText.title"
+                @close="closeDialog"
+                @save="save"
+            />
+        </v-main>
+        <bottom-page app @set-new-contact-dialog="setNewContactDialog" />
+    </v-app>
 </template>
 
 <script lang="ts">

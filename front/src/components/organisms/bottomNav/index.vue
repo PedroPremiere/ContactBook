@@ -1,7 +1,5 @@
 <template>
-    <v-row no-gutters>
-        <my-bottom-nav @set-new-contact-dialog="setNewContactDialog" />
-    </v-row>
+    <my-bottom-nav @set-new-contact-dialog="setNewContactDialog" />
 </template>
 
 <script>

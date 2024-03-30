@@ -1,6 +1,6 @@
 <template>
-    <div class="mt-0 pt-0">
-        <div v-for="(value, key) in items" :key="key" class="mt-0 pt-0">
+    <div class="mt-0 pt-0 w-100">
+        <div v-for="(value, key) in items" :key="key" class="mt-0 pt-0 w-100">
             <my-contacts-separator :sort="sort" :value="key.toString()" />
             <div
                 v-for="(subItems, keySubItems) in chunk(value, perRow)"

@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card
-            class="mx-auto pa-3 pb-0 text-center bg-info rounded-xl rounded-be-0"
+            class="mx-0 pa-3 pb-0 text-center bg-info rounded-xl rounded-be-0"
             :subtitle="contact.phone"
             :title="contact.name"
         >
@@ -19,7 +19,8 @@
             <v-card-actions class="mb-0 pb-0">
                 <card-menu
                     @open-delete-dialog="isDeleteDialogOpen = true"
-                    @open-edit-dialog="editFavorite(contact.id)"
+                    @open-edit-dialog="isEditDialogOpen = true"
+                    @edit-favorite="editFavorite(contact.id)"
                 />
             </v-card-actions>
         </v-card>

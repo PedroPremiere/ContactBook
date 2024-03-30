@@ -1,9 +1,17 @@
 <template>
     <v-container class="pa-0 mx-0">
         <my-sorting-menu @set-sorting="value => (sort = value)" />
+        <!--
+        todo implement
+        <v-row>
+            <v-col align-self="end" class="my-0 py-0">
+                <my-autocomplete data-v-step="2" />
+            </v-col>
+        </v-row>
+        -->
         <v-row class="pa-0 mx-0">
-            <v-col>
-                <v-list lines="one" class="bg-white">
+            <v-col class="pa-0 mx-0" cols="12">
+                <v-list lines="one" class="bg-white w-100">
                     <contact-list-section :items="sorting()" :sort="sort" />
                 </v-list>
             </v-col>
