@@ -4,10 +4,19 @@
             max-width="400"
             text="Are you sure you wan to delete?"
             title="Delete"
+            class="bg-warning rounded-xl rounded-be-0"
         >
             <template #actions>
-                <v-btn class="ms-auto" text="Yes, Remove" @click="save"></v-btn>
-                <v-btn class="ms-auto" text="No" @click="close"></v-btn>
+                <v-btn
+                    class="ms-auto bg-success rounded-xl rounded-be-0"
+                    text="Yes, Remove"
+                    @click="save"
+                ></v-btn>
+                <v-btn
+                    class="ms-auto bg-secondary rounded-xl rounded-be-0"
+                    text="No"
+                    @click="close"
+                ></v-btn>
             </template>
         </v-card>
     </v-dialog>

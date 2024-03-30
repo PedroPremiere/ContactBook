@@ -9,7 +9,7 @@
             </p>
         </div>
 
-        <v-avatar v-if="sort === 'name'" color="indigo">{{ value }}</v-avatar>
+        <v-avatar v-if="sort === 'name'" color="success">{{ value }}</v-avatar>
     </div>
 </template>
 

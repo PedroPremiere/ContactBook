@@ -1,15 +1,15 @@
 <template>
     <div>
         <v-card
-            class="mx-auto pa-4 text-center bg-primary rounded-xl rounded-be-0"
-            :subtitle="contact.name"
-            :title="contact.phone"
+            class="mx-auto pa-4 text-center bg-info rounded-xl rounded-be-0"
+            :subtitle="contact.phone"
+            :title="contact.name"
         >
             <template #prepend>
                 <my-avatar :name="contact.name" />
             </template>
             <template #append>
-                <span>
+                <span class="d-none d-lg-flex d-xl-none">
                     {{ createdTimeToNow(contact.createDate) }}
                     <v-tooltip activator="parent" location="top">
                         {{ contact.createDate }}

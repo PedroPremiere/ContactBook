@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex justify-space-evenly mb-1 bg-surface-variant">
+    <div class="d-flex justify-space-evenly mb-1 pa-0 mx-0 bg-primary">
         <div v-for="item in items" :key="item.id" class="flex-grow-1 ma-2 pa-2">
             <my-card :contact="item"></my-card>
         </div>

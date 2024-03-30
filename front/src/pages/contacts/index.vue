@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-container class="bg-surface-variant rounded-t-xl h-screen">
+        <v-container class="bg-primary rounded-t-xl h-screen pa-0">
             <top-menu
                 :langs="langs"
                 @set-new-contact-dialog="setNewContactDialog"

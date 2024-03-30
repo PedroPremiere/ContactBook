@@ -1,6 +1,6 @@
 <template>
     <v-row no-gutters>
-        <v-container>
+        <v-container class="pa-0 mx-0">
             <v-row no-gutters>
                 <my-autocomplete data-v-step="2" />
             </v-row>

@@ -30,9 +30,9 @@ export default {
         color() {
             switch (this.value) {
                 case 0:
-                    return 'indigo';
+                    return '#9CE5CB';
                 case 1:
-                    return 'teal';
+                    return '#FFDDD0';
                 default:
                     return 'blue-grey';
             }

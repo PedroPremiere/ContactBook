@@ -24,13 +24,17 @@
             </v-row>
             <v-row>
                 <v-col cols="6">
-                    <v-btn class="mt-2" block @click="close()">
+                    <v-btn
+                        class="mt-2 bg-warning rounded-xl rounded-b-0"
+                        block
+                        @click="close()"
+                    >
                         {{ $t('Close') }}
                     </v-btn>
                 </v-col>
                 <v-col cols="6">
                     <v-btn
-                        class="mt-2"
+                        class="mt-2 bg-success rounded-xl rounded-b-0"
                         :disabled="!valid"
                         block
                         @click="save()"

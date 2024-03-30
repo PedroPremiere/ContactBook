@@ -1,12 +1,5 @@
 <template>
-    <div
-        :style="{
-            'background-image':
-                'url(' +
-                require('./assets/emily-bernal-r2F5ZIEUPtk-unsplash.jpg') +
-                ')'
-        }"
-    >
+    <div class="bg-secondary">
         <contacts-page />
     </div>
 </template>

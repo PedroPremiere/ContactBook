@@ -2,7 +2,6 @@ import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import 'vuetify/styles';
-import colors from 'vuetify/util/colors';
 
 import '@mdi/font/css/materialdesignicons.css';
 
@@ -14,15 +13,11 @@ const vuetify = createVuetify({
             light: {
                 dark: false,
                 colors: {
-                    primary: colors.indigo.lighten3, // #E53935
-                    secondary: colors.red.lighten4 // #FFCDD2
-                }
-            },
-            dark: {
-                dark: true,
-                colors: {
-                    primary: colors.indigo.lighten3, // #E53935
-                    secondary: colors.red.lighten4 // #FFCDD2
+                    primary: '#FAC1CE',
+                    secondary: '#FD9282',
+                    success: '#9CE5CB',
+                    info: '#FFDDD0',
+                    warning: '#FEE3AF'
                 }
             }
         }

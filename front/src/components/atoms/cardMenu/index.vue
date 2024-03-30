@@ -1,5 +1,5 @@
 <template>
-    <v-container class="pa-4 text-center bg-secondary rounded-xl rounded-be-0">
+    <v-container class="pa-4 text-center bg-success rounded-xl rounded-be-0">
         <v-row no-gutters>
             <v-col>
                 <button @click="openDeleteDialog()">
@@ -38,11 +38,10 @@ export default defineComponent({
             editFavorite: 'editFavorite'
         }),
         openDeleteDialog() {
-            this.removeContact(this.contact.id);
-            this.isDeleteDialogOpen = false;
+            this.$emit('openDeleteDialog');
         },
         openEditDialog() {
-            this.isEditDialogOpen = false;
+            this.$emit('openEditDialog');
         }
     }
 });

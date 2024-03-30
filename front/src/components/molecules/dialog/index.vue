@@ -1,6 +1,10 @@
 <template>
     <v-dialog v-model="open$" class="w-75" persistent>
-        <v-card :text="text" :title="title">
+        <v-card
+            :text="text"
+            :title="title"
+            class="bg-info rounded-xl rounded-be-0"
+        >
             <v-card-item>
                 <my-form
                     :firstname="name"
