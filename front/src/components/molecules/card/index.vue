@@ -6,7 +6,7 @@
             :title="contact.phone"
         >
             <template #prepend>
-                <my-avatar :initials="initials(contact.name)" />
+                <my-avatar :name="contact.name" />
             </template>
             <template #append>
                 <span>
@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import MyAvatar from '../avatar/index.vue';
+import MyAvatar from '../../atoms/avatar/index.vue';
 import MyDeleteDialog from '@/components/molecules/deleteDialog/index.vue';
 import { mapActions } from 'vuex';
 import MyDialog from '@/components/molecules/dialog/index.vue';
@@ -49,7 +49,6 @@ import { defineComponent, PropType } from 'vue';
 import { IContact } from '@/types/contact';
 import CardMenu from '@/components/atoms/cardMenu/index.vue';
 import { createdTimeToNow } from '@/services/helpers/createdTimeToNow';
-import { initials } from '@/services/helpers/initials';
 
 export default defineComponent({
     name: 'MyCard',
@@ -87,9 +86,6 @@ export default defineComponent({
         }),
         createdTimeToNow(value: string) {
             return createdTimeToNow(value);
-        },
-        initials(value: string) {
-            return initials(value);
         },
         removeItem() {
             this.removeContact(this.contact.id);

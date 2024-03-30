@@ -6,4 +6,8 @@ export default {
     tags: ['autodocs']
 };
 
-export const Primary = {};
+export const Primary = {
+    args: {
+        langs: ['en', 'de', 'pl', 'nl']
+    }
+};

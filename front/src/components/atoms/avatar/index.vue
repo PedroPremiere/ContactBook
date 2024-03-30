@@ -1,21 +1,27 @@
 <template>
     <v-avatar color="info" size="54">
-        <span class="text-h5">{{ initials }}</span>
+        <span class="text-h5">{{ initials(name) }}</span>
     </v-avatar>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { initials } from '@/services/helpers/initials';
 
 export default defineComponent({
     name: 'MyAvatar',
     props: {
-        initials: {
+        name: {
             type: String,
             default: ''
         }
     },
 
-    emits: ['click']
+    emits: ['click'],
+    methods: {
+        initials(value: string) {
+            return initials(value);
+        }
+    }
 });
 </script>

@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import MyCard from '@/components/atoms/card/index.vue';
+import MyCard from '@/components/molecules/card/index.vue';
 import { defineComponent, PropType } from 'vue';
 import { IContact } from '@/types/contact';
 

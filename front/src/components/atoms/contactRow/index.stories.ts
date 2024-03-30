@@ -1,4 +1,6 @@
 import MyContactRow from './index.vue';
+import { IContact } from '@/types/contact';
+import { seed } from '@/serviceWorker/seed';
 
 export default {
     title: 'Components/Atoms/MyContactRow',
@@ -6,9 +8,11 @@ export default {
     tags: ['autodocs']
 };
 
+const contacts = [] as IContact[];
+
+seed(contacts, 2);
 export const Primary = {
     args: {
-        value: new Date(),
-        sort: 'date'
+        items: contacts
     }
 };

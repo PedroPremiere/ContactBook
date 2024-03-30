@@ -1,4 +1,4 @@
-import { randFullName, randPhoneNumber } from '@ngneat/falso';
+import { randBoolean } from '@ngneat/falso';
 
 import CardMenu from './index.vue';
 
@@ -10,9 +10,6 @@ export default {
 
 export const Primary = {
     args: {
-        primary: true,
-        title: randFullName(),
-        subtitle: randPhoneNumber(),
-        label: 'Button'
+        favorite: randBoolean()
     }
 };

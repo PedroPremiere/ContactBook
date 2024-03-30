@@ -1,4 +1,5 @@
 import MyAvatar from './index.vue';
+import { randSuperhero } from '@ngneat/falso';
 
 export default {
     title: 'Components/Atoms/Avatar',
@@ -8,7 +9,6 @@ export default {
 
 export const Primary = {
     args: {
-        primary: true,
-        label: 'Button'
+        name: randSuperhero().realName
     }
 };

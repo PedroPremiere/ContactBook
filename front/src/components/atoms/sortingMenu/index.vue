@@ -20,7 +20,6 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
     name: 'MySortingMenu',
-    props: {},
     emits: ['setSorting'],
     methods: {
         setSorting(value: string) {

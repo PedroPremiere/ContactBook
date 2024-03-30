@@ -1,4 +1,5 @@
 import MyForm from './index.vue';
+import { randPhoneNumber, randSuperhero } from '@ngneat/falso';
 
 export default {
     title: 'Components/Atoms/Form',
@@ -8,7 +9,7 @@ export default {
 
 export const Primary = {
     args: {
-        primary: true,
-        label: 'Button'
+        firstname: randSuperhero().realName,
+        phone: randPhoneNumber()
     }
 };

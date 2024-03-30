@@ -83,7 +83,18 @@ export default defineComponent({
                 return 'Phone is requred.';
             },
             (value: string) => {
-                if (/\d/g.test(value) && value.length < 15) return true;
+                if (
+                    /^\+?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{3,6}$/.test(
+                        value
+                            .split('(')
+                            .join()
+                            .split(')')
+                            .join()
+                            .split(' ')
+                            .join('')
+                    )
+                )
+                    return true;
 
                 return 'Phone must be valid.';
             }
