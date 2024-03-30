@@ -16,6 +16,19 @@
                 @close="closeDialog"
                 @save="save"
             />
+            <my-dialog
+                :open="isEditModalOpen"
+                :text="selectedDialogText.text"
+                :title="selectedDialogText.title"
+                :name="selectedItemForEdit.name"
+                :phone="selectedItemForEdit.phone"
+                @close="closeEditModal"
+                @save="edit"
+            />
+            <my-delete-dialog
+                :open="isDeleteModalOpen"
+                @close="closeDeleteModal()"
+            />
         </v-main>
         <bottom-page app @set-new-contact-dialog="setNewContactDialog" />
     </v-app>
@@ -29,7 +42,7 @@ import 'dayjs/locale/de';
 import 'dayjs/locale/nl';
 
 import MyDialog from '../../components/molecules/dialog/index.vue';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import { steps } from '@/services/tour/steps.mixin';
 import { changeLanguage } from '@/services/i18nLanguages/changeLanguage.mixin';
 import MainContent from '@/components/organisms/mainContent/index.vue';
@@ -37,10 +50,12 @@ import BottomPage from '@/components/organisms/bottomNav/index.vue';
 import TopMenu from '@/components/organisms/topMenu/index.vue';
 import { defineComponent } from 'vue';
 import { IContact } from '@/types/contact';
+import MyDeleteDialog from '@/components/molecules/deleteDialog/index.vue';
 
 export default defineComponent({
     name: 'ContactsPage',
     components: {
+        MyDeleteDialog,
         MyDialog,
         MainContent,
         BottomPage,
@@ -62,6 +77,14 @@ export default defineComponent({
             }
         };
     },
+    computed: {
+        ...mapGetters({
+            isDeleteModalOpen: 'isDeleteModalOpen',
+            isEditModalOpen: 'isEditModalOpen',
+            selectedItemForDelete: 'selectedItemForDelete',
+            selectedItemForEdit: 'selectedItemForEdit'
+        })
+    },
     mounted() {
         try {
             this.index();
@@ -79,7 +102,10 @@ export default defineComponent({
     methods: {
         ...mapActions({
             saveContact: 'save',
-            index: 'index'
+            index: 'index',
+            closeDeleteModal: 'closeDeleteModal',
+            closeEditModal: 'closeEditModal',
+            editContact: 'edit'
         }),
         changeLanguage,
         steps() {
@@ -100,6 +126,13 @@ export default defineComponent({
         },
         onTourFinish() {
             localStorage.tour = 'done';
+        },
+        edit() {
+            this.editContact({
+                id: this.selectedItemForDelete.id,
+                phone: this.selectedItemForDelete.phone,
+                name: this.selectedItemForDelete.name
+            });
         }
     }
 });

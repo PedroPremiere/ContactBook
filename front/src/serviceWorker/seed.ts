@@ -16,4 +16,5 @@ export function seed(contacts: IContact[], count = 10) {
             favorite: false
         });
     }
+    return contacts;
 }

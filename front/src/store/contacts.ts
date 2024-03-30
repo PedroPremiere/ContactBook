@@ -5,11 +5,13 @@ import { groupByTimeAgo } from '@/filters/groupByTimeAgo';
 import { IState } from '@/types/state';
 import { IContact } from '@/types/contact';
 import { Commit } from 'vuex';
+import { seed } from '@/serviceWorker/seed';
 
 const contacts = {
     namespace: true,
     state: () => ({
-        contacts: [],
+        //todo remove
+        contacts: seed([]),
         favoritesOnly: false
     }),
     getters: {
@@ -72,7 +74,7 @@ const contacts = {
         },
         async edit({ commit }: { commit: Commit }, contact: IContact) {
             const data = await axios.put(`/contacts/${contact.id}`, contact);
-            console.log(data.data);
+
             commit('updateContract', data.data);
         },
         async editFavorite({ commit }: { commit: Commit }, id: string) {

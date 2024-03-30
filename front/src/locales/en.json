@@ -33,6 +33,8 @@
     "name": "Name",
     "phone": "Phone",
     "submit": "OK",
-    "close": "Close"
+    "close": "Close",
+    "delete": "Delete",
+    "deleteForSure":"Are you sure you want to delete"
   }
 }

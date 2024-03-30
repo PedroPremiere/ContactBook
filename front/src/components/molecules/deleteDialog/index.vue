@@ -2,8 +2,8 @@
     <v-dialog v-model="isOpen" width="auto" persistent>
         <v-card
             max-width="400"
-            text="Are you sure you wan to delete?"
-            title="Delete"
+            :text="text()"
+            :title="title()"
             class="bg-warning rounded-xl rounded-be-0"
         >
             <template #actions>
@@ -23,16 +23,23 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
     name: 'MyDeleteDialog',
     props: {
         open: Boolean
     },
-    emits: ['close', 'removeItem'],
+    emits: ['close'],
     data() {
         return {
             isOpen: false
         };
+    },
+    computed: {
+        ...mapGetters({
+            selectedItem: 'selectedItemForDelete'
+        })
     },
     watch: {
         open() {
@@ -43,11 +50,22 @@ export default {
         this.isOpen = this.open;
     },
     methods: {
+        ...mapActions({
+            removeContact: 'delete',
+            closeDeleteModal: 'closeDeleteModal'
+        }),
         close() {
             this.$emit('close');
         },
         save() {
-            this.$emit('removeItem');
+            this.removeContact(this.selectedItem.id);
+            this.closeDeleteModal();
+        },
+        text() {
+            return `${this.$t('dialog.deleteForSure')} ${this.selectedItem.name}?`;
+        },
+        title() {
+            return `${this.$t('dialog.delete')} ${this.selectedItem.name}?`;
         }
     }
 };

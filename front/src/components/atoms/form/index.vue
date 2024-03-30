@@ -1,7 +1,7 @@
 <template>
     <v-form v-model="valid" @submit.prevent>
         <v-container>
-            <v-row>
+            <v-row class="bg-white rounded-xl rounded-b-0">
                 <v-col cols="12">
                     <v-text-field
                         v-model="firstName$"
@@ -12,7 +12,7 @@
                     ></v-text-field>
                 </v-col>
             </v-row>
-            <v-row>
+            <v-row class="bg-white rounded-xl rounded-t-0 rounded-be-0">
                 <v-col cols="12">
                     <v-text-field
                         v-model="phone$"
@@ -25,21 +25,21 @@
             <v-row>
                 <v-col cols="6">
                     <v-btn
-                        class="mt-2 bg-warning rounded-xl rounded-b-0"
-                        block
-                        @click="close()"
-                    >
-                        {{ $t('Close') }}
-                    </v-btn>
-                </v-col>
-                <v-col cols="6">
-                    <v-btn
-                        class="mt-2 bg-success rounded-xl rounded-b-0"
+                        class="ms-auto bg-success rounded-xl rounded-be-0"
                         :disabled="!valid"
                         block
                         @click="save()"
                     >
                         {{ $t('submit') }}
+                    </v-btn>
+                </v-col>
+                <v-col cols="6">
+                    <v-btn
+                        class="ms-auto bg-secondary rounded-xl rounded-be-0"
+                        block
+                        @click="close()"
+                    >
+                        {{ $t('Close') }}
                     </v-btn>
                 </v-col>
             </v-row>
