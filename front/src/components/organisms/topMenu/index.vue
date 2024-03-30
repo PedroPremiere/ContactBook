@@ -15,12 +15,6 @@
                 class="d-flex justify-space-between mb-6 bg-info rounded-xl rounded-be-0 pa-2"
             >
                 <h2>{{ $t('title') }}</h2>
-
-                <v-icon
-                    icon="fas mdi-plus"
-                    class="v-step-1"
-                    @click="setNewContactDialog"
-                />
             </v-row>
         </v-container>
     </v-row>
@@ -35,11 +29,8 @@ export default {
             required: true
         }
     },
-    emits: ['setNewContactDialog', 'changeLanguage'],
+    emits: ['changeLanguage'],
     methods: {
-        setNewContactDialog() {
-            this.$emit('setNewContactDialog');
-        },
         changeLanguage() {
             this.$emit('changeLanguage');
         }

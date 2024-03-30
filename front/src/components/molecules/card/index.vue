@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card
-            class="mx-auto pa-4 text-center bg-info rounded-xl rounded-be-0"
+            class="mx-auto pa-3 pb-0 text-center bg-info rounded-xl rounded-be-0"
             :subtitle="contact.phone"
             :title="contact.name"
         >
@@ -16,7 +16,7 @@
                     </v-tooltip>
                 </span>
             </template>
-            <v-card-actions>
+            <v-card-actions class="mb-0 pb-0">
                 <card-menu
                     @open-delete-dialog="isDeleteDialogOpen = true"
                     @open-edit-dialog="editFavorite(contact.id)"

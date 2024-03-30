@@ -1,9 +1,9 @@
 <template>
-    <v-container class="bg-primary pa-0 mx-0">
+    <v-container class="pa-0 mx-0">
         <my-sorting-menu @set-sorting="value => (sort = value)" />
-        <v-row>
+        <v-row class="pa-0 mx-0">
             <v-col>
-                <v-list lines="one" class="bg-secondary">
+                <v-list lines="one" class="bg-white">
                     <contact-list-section :items="sorting()" :sort="sort" />
                 </v-list>
             </v-col>

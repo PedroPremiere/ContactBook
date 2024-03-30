@@ -10,7 +10,7 @@
             'Wyoming'
         ]"
         data-v-step="3"
-    ></v-autocomplete>
+    />
 </template>
 
 <script lang="ts">

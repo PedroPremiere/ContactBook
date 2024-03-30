@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mt-0 pt-0">
         <div v-if="sort === 'date'">
             <p>
                 {{ createdTimeToNow(value) }}

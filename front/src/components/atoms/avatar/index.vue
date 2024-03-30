@@ -1,5 +1,5 @@
 <template>
-    <v-avatar color="info" size="54">
+    <v-avatar color="primary" size="54">
         <span class="text-h5">{{ initials(name) }}</span>
     </v-avatar>
 </template>

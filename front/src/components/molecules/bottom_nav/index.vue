@@ -1,5 +1,5 @@
 <template>
-    <v-layout class="overflow-visible" style="height: 56px">
+    <v-layout style="height: 56px">
         <v-bottom-navigation v-model="value" :bg-color="color" mode="shift">
             <v-btn data-v-step="favoriteOnly" @click="changeFavoriteOnly(true)">
                 <v-icon icon="fas mdi-star" />
@@ -12,6 +12,11 @@
 
                 <span>Contacts</span>
             </v-btn>
+            <v-btn data-v-step="allContacts" @click="setNewContactDialog">
+                <v-icon icon="fas mdi-plus" class="v-step-1" />
+
+                <span>Add New</span>
+            </v-btn>
         </v-bottom-navigation>
     </v-layout>
 </template>
@@ -20,7 +25,7 @@ import { mapActions, mapGetters } from 'vuex';
 
 export default {
     name: 'MyButton',
-    emits: ['change'],
+    emits: ['change', 'setNewContactDialog'],
     data: () => ({ value: 1 }),
     computed: {
         ...mapGetters({
@@ -46,7 +51,10 @@ export default {
     methods: {
         ...mapActions({
             changeFavoriteOnly: 'favoriteOnly'
-        })
+        }),
+        setNewContactDialog() {
+            this.$emit('setNewContactDialog');
+        }
     }
 };
 </script>

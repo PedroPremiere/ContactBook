@@ -1,14 +1,13 @@
 <template>
     <div>
-        <v-container class="bg-primary rounded-t-xl h-screen pa-0">
+        <v-container class="bg-white h-screen pa-0">
             <top-menu
                 :langs="langs"
-                @set-new-contact-dialog="setNewContactDialog"
                 @change-language="changeLanguage($i18n.locale)"
             />
 
             <main-content />
-            <bottom-page />
+            <bottom-page @set-new-contact-dialog="setNewContactDialog" />
         </v-container>
         <v-tour name="myTour" :steps="steps()" :callbacks="myCallbacks" />
         <my-dialog
