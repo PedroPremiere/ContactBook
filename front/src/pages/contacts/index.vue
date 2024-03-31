@@ -122,7 +122,10 @@ export default defineComponent({
             this.isDialogOpen = true;
         },
         save(value: IContact) {
+            value.createDate = new Date().toISOString();
+            console.log(value);
             this.saveContact(value);
+            this.isDialogOpen = false;
         },
         onTourFinish() {
             localStorage.tour = 'done';

@@ -69,6 +69,7 @@ export default {
         }),
         setNewContactDialog() {
             this.$emit('setNewContactDialog');
+            this.value = 1;
         }
     }
 };
