@@ -1,10 +1,11 @@
 <template>
-    <v-row class="my-0 py-0">
+    <v-row class="my-0 py-0" data-cy="sortingMenu">
         <v-col align-self="end" class="my-0 py-0">
             <div class="d-flex align-content-end flex-wrap my-0 py-0">
                 <v-btn
                     data-v-step="5"
                     class="bg-secondary rounded-xl rounded-t-0 my-0 py-0"
+                    data-cy="sortingMenuSortByName"
                     @click="setSorting('name')"
                 >
                     {{ $t('sortBy') }}
@@ -14,6 +15,7 @@
                 <v-btn
                     data-v-step="4"
                     class="bg-info rounded-xl rounded-t-0 my-0 py-0"
+                    data-cy="sortingMenuSortByDate"
                     @click="setSorting('date')"
                 >
                     {{ $t('sortBy') }}

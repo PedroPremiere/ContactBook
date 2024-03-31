@@ -15,7 +15,8 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "cypress"
     ],
     "paths": {
       "@/*": [
@@ -35,7 +36,9 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "cypress",
+    "vuetify"
   ],
   "exclude": [
     "node_modules"

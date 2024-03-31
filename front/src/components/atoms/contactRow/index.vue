@@ -1,5 +1,8 @@
 <template>
-    <div class="d-flex justify-space-evenly mb-1 pa-0 mx-0">
+    <div
+        class="d-flex justify-space-evenly mb-1 pa-0 mx-0"
+        data-cy="contactRow"
+    >
         <div v-for="item in items" :key="item.id" class="flex-grow-1 pa-2">
             <my-card :contact="item"></my-card>
         </div>

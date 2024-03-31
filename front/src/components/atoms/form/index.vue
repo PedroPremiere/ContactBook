@@ -1,5 +1,5 @@
 <template>
-    <v-form v-model="valid" @submit.prevent>
+    <v-form v-model="valid" data-cy="contactForm" @submit.prevent>
         <v-container>
             <v-row class="bg-white rounded-xl rounded-b-0">
                 <v-col cols="12">
@@ -9,6 +9,7 @@
                         :rules="nameRules"
                         :label="$t('dialog.name')"
                         required
+                        data-cy="contactFormFirstName"
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -19,6 +20,7 @@
                         :rules="phoneRules"
                         :label="$t('dialog.phone')"
                         required
+                        data-cy="contactFormPhone"
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -28,6 +30,7 @@
                         class="ms-auto bg-success rounded-xl rounded-be-0"
                         :disabled="!valid"
                         block
+                        data-cy="contactFormSubmit"
                         @click="save()"
                     >
                         {{ $t('submit') }}
@@ -37,9 +40,10 @@
                     <v-btn
                         class="ms-auto bg-secondary rounded-xl rounded-be-0"
                         block
+                        data-cy="contactFormClose"
                         @click="close()"
                     >
-                        {{ $t('Close') }}
+                        {{ $t('close') }}
                     </v-btn>
                 </v-col>
             </v-row>

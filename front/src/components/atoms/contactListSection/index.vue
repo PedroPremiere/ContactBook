@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-0 pt-0 w-100">
+    <div class="mt-0 pt-0 w-100" data-cy="contactListSection">
         <div v-for="(value, key) in items" :key="key" class="mt-0 pt-0 w-100">
             <my-contacts-separator :sort="sort" :value="key.toString()" />
             <div

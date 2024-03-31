@@ -59,8 +59,6 @@ export default {
 
         load({ side, done }) {
             console.log(side);
-
-            console.log(this.$i18n.locale);
             done('ok');
         }
     }

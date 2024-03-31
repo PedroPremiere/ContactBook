@@ -1,15 +1,24 @@
 <template>
-    <div class="mt-0 pt-0">
+    <div :id="generateId()" class="mt-0 pt-0" data-cy="contactSeparator">
         <div v-if="sort === 'date'">
             <p>
-                {{ createdTimeToNow(value) }}
+                <span data-cy="contactSeparatorDateText">{{
+                    createdTimeToNow(value)
+                }}</span>
+
                 <v-tooltip activator="parent" location="top">
                     {{ value }}
                 </v-tooltip>
             </p>
         </div>
 
-        <v-avatar v-if="sort === 'name'" color="success">{{ value }}</v-avatar>
+        <v-avatar
+            v-if="sort === 'name'"
+            color="success"
+            data-cy="contactSeparatorAvatar"
+        >
+            {{ value }}
+        </v-avatar>
     </div>
 </template>
 
@@ -34,6 +43,9 @@ export default defineComponent({
         createdTimeToNow(value: string): string {
             dayjs.extend(relativeTime);
             return dayjs(value).fromNow();
+        },
+        generateId() {
+            return `contactSeparator${this.value}`;
         }
     }
 });

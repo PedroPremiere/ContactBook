@@ -1,17 +1,34 @@
 <template>
-    <v-bottom-navigation v-model="value" :bg-color="color" mode="shift">
-        <v-btn data-v-step="favoriteOnly" @click="changeFavoriteOnly(true)">
+    <v-bottom-navigation
+        v-model="value"
+        :bg-color="color"
+        mode="shift"
+        data-cy="bottomNav"
+    >
+        <v-btn
+            data-v-step="favoriteOnly"
+            data-cy="bottomNavFavoriteOnly"
+            @click="changeFavoriteOnly(true)"
+        >
             <v-icon icon="fas mdi-star" />
 
             <span>Favorites</span>
         </v-btn>
 
-        <v-btn data-v-step="allContacts" @click="changeFavoriteOnly(false)">
+        <v-btn
+            data-v-step="allContacts"
+            data-cy="bottomNavAllContacts"
+            @click="changeFavoriteOnly(false)"
+        >
             <v-icon icon=" mdi-menu" />
 
             <span>Contacts</span>
         </v-btn>
-        <v-btn data-v-step="allContacts" @click="setNewContactDialog">
+        <v-btn
+            data-v-step="addNew"
+            data-cy="bottomNavAddNew"
+            @click="setNewContactDialog()"
+        >
             <v-icon icon="fas mdi-plus" class="v-step-1" />
 
             <span>Add New</span>
@@ -22,7 +39,7 @@
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-    name: 'MyButton',
+    name: 'MyBottom',
     emits: ['change', 'setNewContactDialog'],
     data: () => ({ value: 1 }),
     computed: {

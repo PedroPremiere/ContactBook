@@ -1,21 +1,35 @@
 <template>
-    <v-container class="text-center bg-success rounded-xl rounded-b-0 w-50">
+    <v-container
+        class="text-center bg-success rounded-xl rounded-b-0 w-50"
+        data-cy="cardMenuContainer"
+    >
         <v-row no-gutters class="mb-0 pb-0">
             <v-col class="mb-0 pb-0">
-                <button @click="openDeleteDialog()">
+                <button
+                    data-cy="cardMenuRemoveButton"
+                    @click="openDeleteDialog()"
+                >
                     <v-icon icon="fas mdi-close-circle" />
                 </button>
             </v-col>
             <v-col class="mb-0 pb-0">
-                <button v-if="favorite" @click="editFavorite()">
+                <button
+                    v-if="favorite"
+                    data-cy="cardMenuRemoveFromFavoriteButton"
+                    @click="editFavorite()"
+                >
                     <v-icon icon="fas mdi-star" />
                 </button>
-                <button v-else @click="editFavorite()">
+                <button
+                    v-else
+                    data-cy="cardMenuAddToFavoriteButton"
+                    @click="editFavorite()"
+                >
                     <v-icon icon="fas mdi-star-outline" />
                 </button>
             </v-col>
             <v-col class="mb-0 pb-0">
-                <button @click="openEditDialog()">
+                <button data-cy="cardMenuEditButton" @click="openEditDialog()">
                     <v-icon icon="fas mdi-pencil" />
                 </button>
             </v-col>

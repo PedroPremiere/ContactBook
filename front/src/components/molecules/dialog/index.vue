@@ -1,5 +1,5 @@
 <template>
-    <v-dialog v-model="open$" class="w-75" persistent>
+    <v-dialog v-model="open$" class="w-75" persistent data-cy="dialog">
         <v-card
             :text="text"
             :title="title"
