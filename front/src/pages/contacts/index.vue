@@ -127,12 +127,9 @@ export default defineComponent({
         onTourFinish() {
             localStorage.tour = 'done';
         },
-        edit() {
-            this.editContact({
-                id: this.selectedItemForDelete.id,
-                phone: this.selectedItemForDelete.phone,
-                name: this.selectedItemForDelete.name
-            });
+        edit(value: IContact) {
+            this.editContact({ ...this.selectedItemForEdit, ...value });
+            this.closeEditModal();
         }
     }
 });

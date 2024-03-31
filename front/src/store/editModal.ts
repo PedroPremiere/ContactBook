@@ -18,7 +18,6 @@ const editModal = {
             state.isEditModalOpen = value;
         },
         selectItemForEditModal(state: IState, value: IContact) {
-            console.log(value);
             state.selectedItemForEdit = value;
         }
     },
