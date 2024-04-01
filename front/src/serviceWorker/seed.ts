@@ -1,4 +1,5 @@
 import {
+    randChanceBoolean,
     randFullName,
     randPhoneNumber,
     randRecentDate,
@@ -13,7 +14,7 @@ export function seed(contacts: IContact[], count = 10) {
             phone: randPhoneNumber(),
             createDate: randRecentDate().toUTCString(),
             id: randUuid(),
-            favorite: false
+            favorite: randChanceBoolean({ chanceTrue: 0.3 })
         });
     }
     return contacts;

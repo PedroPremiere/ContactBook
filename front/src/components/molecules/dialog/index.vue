@@ -1,10 +1,12 @@
 <template>
-    <v-dialog v-model="open$" class="w-75" persistent data-cy="dialog">
-        <v-card
-            :text="text"
-            :title="title"
-            class="bg-info rounded-xl rounded-be-0"
-        >
+    <v-dialog v-model="open$" persistent data-cy="dialog">
+        <v-card class="bg-info rounded-xl rounded-be-0 pb-0 my-0">
+            <v-card-title class="d-sm-none d-md-flex">
+                {{ text }}
+            </v-card-title>
+            <v-card-subtitle class="d-none d-md-flex d-lg-none">
+                {{ title }}
+            </v-card-subtitle>
             <v-card-item>
                 <my-form
                     :firstname="name"

@@ -1,8 +1,13 @@
 <template>
-    <v-form v-model="valid" data-cy="contactForm" @submit.prevent>
+    <v-form
+        v-model="valid"
+        data-cy="contactForm"
+        class="my-0 py-0"
+        @submit.prevent
+    >
         <v-container>
             <v-row class="bg-white rounded-xl rounded-b-0">
-                <v-col cols="12">
+                <v-col cols="12" class="pb-0 mb-0">
                     <v-text-field
                         v-model="firstName$"
                         :counter="10"
@@ -10,18 +15,22 @@
                         :label="$t('dialog.name')"
                         required
                         data-cy="contactFormFirstName"
-                    ></v-text-field>
+                        class="pb-0 mb-0"
+                    />
                 </v-col>
             </v-row>
-            <v-row class="bg-white rounded-xl rounded-t-0 rounded-be-0">
-                <v-col cols="12">
+            <v-row
+                class="bg-white rounded-xl rounded-t-0 rounded-be-0 pb-0 mb-0"
+            >
+                <v-col cols="12" class="pb-0 mb-0">
                     <v-text-field
                         v-model="phone$"
                         :rules="phoneRules"
                         :label="$t('dialog.phone')"
                         required
                         data-cy="contactFormPhone"
-                    ></v-text-field>
+                        class="pb-0 mb-0"
+                    />
                 </v-col>
             </v-row>
             <v-row>

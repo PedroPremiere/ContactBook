@@ -10,10 +10,10 @@ import { indexInterceptor } from '@/serviceWorker/interceptors/indexInterceptor'
 // @ts-ignore
 precacheAndRoute(self.__WB_MANIFEST);
 
-const contacts = [];
+const contacts = seed([]);
 
 self.addEventListener('install', () => {
-    seed(contacts);
+    console.log('installed');
 });
 
 self.addEventListener('activate', event => {

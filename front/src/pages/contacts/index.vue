@@ -131,7 +131,11 @@ export default defineComponent({
             localStorage.tour = 'done';
         },
         edit(value: IContact) {
-            this.editContact({ ...this.selectedItemForEdit, ...value });
+            this.editContact({
+                ...this.selectedItemForEdit,
+                ...value,
+                createDate: new Date().toISOString()
+            });
             this.closeEditModal();
         }
     }

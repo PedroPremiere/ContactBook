@@ -12,7 +12,15 @@
   * [Cypress](Readme/Cypress.md)
   * [StoryBook](Readme/Storybook.md)
 * [Features](Readme/Features.md)
-* [Technologies](Readme/Technologies.md) 
+* [Technologies](Readme/Technologies.md)
+
+## Links
+* [Link to repo](https://bitbucket.org/piotr-major/rubrica/src/master/)
+* [Wideoprezentacja projektu (Polish Only)](https://drive.google.com/file/d/1jj6aY1AKEWGLGN45TX6Ut2dMy8_zSNnK/view?usp=sharing)
+* You can contact me on :
+  * [linkedIn](https://www.linkedin.com/in/piotr-major-394b54281/)
+* And watch my articles about computers programing and IT on:
+  * [Medium.com](https://medium.com/@major_piotr)
 
 ## See how cool this app is
 
@@ -44,3 +52,5 @@
 
 ![click Visit Site](Readme/Features/mobileH.png)
 > No matter in what direction you hold it
+
+
