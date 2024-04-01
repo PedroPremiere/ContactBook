@@ -15,4 +15,4 @@ You can read more about Atomic Design Pattern here:
 https://atomicdesign.bradfrost.com/chapter-2/
 
 Todo
-- [ ] some components may be in wrong category
+* some components may be in wrong category

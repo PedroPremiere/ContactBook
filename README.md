@@ -1,17 +1,18 @@
 # Contacts
-![click Visit Site](Readme\main.png)
 
-[Link to online App](https://f59a-178-128-195-27.ngrok-free.app)
+![click Visit Site](Readme/main.png)
+
+[Link to online App](https://wildcat-moral-yearly.ngrok-free.app/)
 
 ## Contents
-+ [Install/Run](front/README.md)
-+ [Useful Commands](front/src/Commands.md)
-+ [Components](front/src/components/Components.md)
-  + [Dirs/AtomicDesign](front/src/components/DirStructure.md)
-  + [Cypress](Readme/Cypress.md)
-  + [StoryBook](Readme/Storybook.md)
-+ [Features](Readme/Features.md)
-+ [Technologies](Readme/Technologies.md) 
+* [Install/Run](front/README.md)
+* [Useful Commands](front/src/Commands.md)
+* [Components](front/src/components/Components.md)
+  * [Dirs/AtomicDesign](front/src/components/DirStructure.md)
+  * [Cypress](Readme/Cypress.md)
+  * [StoryBook](Readme/Storybook.md)
+* [Features](Readme/Features.md)
+* [Technologies](Readme/Technologies.md) 
 
 ## See how cool this app is
 

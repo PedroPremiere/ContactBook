@@ -14,6 +14,6 @@ npx cypress open
 ```
 
 Todo:
-- [ ] E2E tests
-- [ ] tests for i18n
-- [ ] test for responsive 
+* E2E tests
+* tests for i18n
+* test for responsive 

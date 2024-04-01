@@ -5,15 +5,16 @@
 
 
 App is available here:
-https://f59a-178-128-195-27.ngrok-free.app
+https://wildcat-moral-yearly.ngrok-free.app/
+
 __this address is temporary__
 
 App is hosted on DigitalOcean. There I use Nginx to serve build app.
 I use ngrock to redirect traffic to https, it is needed because service worker needs https to intercept. 
 
 Todo:
-- [ ] I am waiting for domain registration, app will be available on new address 
-- [ ] CICD - there is problem with build on my server :), no enough ram
+* I am waiting for domain registration, app will be available on new address 
+* CICD - there is problem with build on my server :), no enough ram
 
 ### How to run locally
 If you want to install app locally use those commands in terminal:
@@ -37,7 +38,8 @@ npm run serve
 You could also try to use server from exampleBackend and bypass serviceWorker.
 
 Todo:
-- [ ] Docker
+
+* Docker
 
 
 
